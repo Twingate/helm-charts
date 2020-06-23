@@ -47,4 +47,3 @@ workflows:
             branches:
               only:
                 - master
-                - feature/access-node-helm-chart
