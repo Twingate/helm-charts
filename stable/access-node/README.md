@@ -17,7 +17,10 @@ To install the chart with the release name `my-release`:
 
 ```console
 $ helm repo add twingate https://twingate.github.io/helm-charts
-$ helm install my-release twingate/connector -n [namespace]
+$ helm upgrade --install my-release twingate/connector -n [namespace] \
+    --set connector.tenant=[tenant]  \
+    --set connector.accessToken=[accessToken] \
+    --set connector.refreshToken=[refreshToken]
 ```
 
 These commands deploy Twingate on the Kubernetes cluster in the default configuration. The [Parameters](#parameters) section lists the parameters that can be configured during installation.
