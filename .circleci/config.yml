@@ -20,7 +20,7 @@ jobs:
           command: |
             git remote add k8s https://github.com/twingate/helm-charts
             git fetch k8s master
-            if curl --head --silent --fail https://twingate.github.io/helm-charts 2> /dev/null;
+            if curl --head --silent --fail https://twingate.github.io/helm-charts/index.yaml 2> /dev/null;
             then
               ct lint --config test/ct.yaml
             else
