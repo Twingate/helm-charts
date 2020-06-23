@@ -31,10 +31,10 @@ tolerations: []
 
 affinity: {}
 
-accessNode:
-  logLevel: 3
-  tenant: {}
+connector:
+  logLevel: "error"
+  tenant: 
   url: "twingate.com"
-  accessToken: {}
-  refreshToken: {}
-  dnsServer: {}
+  accessToken: 
+  refreshToken: 
+  dnsServer: 
