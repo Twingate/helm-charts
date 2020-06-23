@@ -47,4 +47,4 @@ workflows:
             branches:
               only:
                 - master
-                - ${CIRCLE_BRANCH}
+                - feature/access-node-helm-chart
