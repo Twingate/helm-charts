@@ -61,6 +61,3 @@ The following table lists the configurable parameters of the Twingate chart and 
 | `nodeSelector`                          | node labels for pod assignment                                              | `{}` (The value is evaluated as a template)             |
 | `tolerations`                           | Tolerations for pod assignment                                              | `[]` (The value is evaluated as a template)             |
 | `resources`                             | Resrouce limitations                                                        | `{}` (The value is evaluated as a template)             |
-
-
-

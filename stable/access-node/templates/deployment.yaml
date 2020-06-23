@@ -34,11 +34,11 @@ spec:
             - name: CONFIG_FILE
               value: "/tg-config/access_node.json"
             - name: LOG_LEVEL
-              {{ if .Values.connector.logLevel == "warning" }}
+              {{ if eq .Values.connector.logLevel "warning" }}
                 value: 4
-              {{ else if .Values.connector.logLevel == "info" }}
+              {{ else if eq .Values.connector.logLevel "info" }}
                 value: 6
-              {{ else if .Values.connector.logLevel == "debug" }}
+              {{ else if eq .Values.connector.logLevel "debug" }}
                 value: 7
               {{ else }}
                 value: 3
