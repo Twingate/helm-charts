@@ -12,5 +12,5 @@ git rebase master
 for i in $(ls -1 ${1})
 do
     echo "building ${i} chart"
-    helm package -d ${FOLDER} ${1}/${i} 
+    helm3 package -d ${FOLDER} ${1}/${i} 
 done
