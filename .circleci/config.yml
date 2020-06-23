@@ -8,7 +8,6 @@ jobs:
       - run:
           name: lint
           command: |
-            echo ${FINGERPRINTS}
             git remote add k8s https://github.com/twingate/helm-charts
             git fetch k8s ${CIRCLE_BRANCH}
             if curl --head --silent --fail https://twingate.github.io/helm-charts/index.yaml 2> /dev/null;
@@ -28,7 +27,7 @@ jobs:
           command: .circleci/build.sh stable
       - add_ssh_keys:
           fingerprints:
-            - ${FINGERPRINTS}
+            - a1:6e:2f:67:a6:f3:eb:4b:5c:5f:ce:fd:25:74:ac:c1
       - run:
           name: publish
           command: .circleci/publish.sh https://twingate.github.io/helm-charts/packages
