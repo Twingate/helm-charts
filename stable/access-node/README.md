@@ -57,7 +57,6 @@ The following table lists the configurable parameters of the Twingate chart and 
 | `nameOverride`                          | String to partially override twingate.fullname template                     | `nil`                                                   |
 | `fullnameOverride`                      | String to fully override twingate.fullname template                         | `nil`                                                   |
 | `replicas`                              | Number of replicas for the application                                      | `1`                                                     |
-| `applicationPort`                       | Port where the application will be running                                  | `80`                                                    |
 | `affinity`                              | Map of node/pod affinities                                                  | `{}` (The value is evaluated as a template)             |
 | `nodeSelector`                          | node labels for pod assignment                                              | `{}` (The value is evaluated as a template)             |
 | `tolerations`                           | Tolerations for pod assignment                                              | `[]` (The value is evaluated as a template)             |
@@ -65,14 +64,3 @@ The following table lists the configurable parameters of the Twingate chart and 
 
 
 
-
-helm upgrade --install an-helm-test twingate/access-node -n default --set connector.tenant=beamreach \
-    --version=0.1.1 \
-    --set connector.url=dev.opstg.com \
-    --set connector.accessToken=eyJ0eXAiOiJEQVQiLCJhbGciOiJFUzI1NiIsImtpZCI6Imh4TU05R0hEdXJSUi12TElEWEJDNzlsQXFPeWRYY1dCejY1b09HaVlKVzAifQ.eyJudCI6IkFOIiwiYWlkIjoiNDEiLCJkaWQiOiJkZXZpY2UtYW5jLTItYW4tMTA5IiwianRpIjoiMjBiMzVjZWMtMDBjMy00OGE2LTljNWEtNzUyNWZkNjYxYWE1IiwiaXNzIjoidHdpbmdhdGUtZGV2IiwiYXVkIjoiYmVhbXJlYWNoIiwiZXhwIjoxNTkyOTQ2NDMyLCJpYXQiOjE1OTI5NDYxMzIsImFwX2V4cCI6eyIxIjoxNTkyOTQ5NzMyfSwidmVyIjoiMSJ9.E89eYwb1aXqZbRhWhVykZGlaFYt1wxvTCrE1bfO30z2jQKyv883O37KykXEDfZeK1AGWks0Hlz0Y1PMsD_JBgA \
-    --set connector.refreshToken=3a591a8b90c1f6eeee2fdf98c90e84f022622ac1273b4a26eef69f7227da6b3b88a4eb80e4cbcab7058c18c2bbc99b8353a7b38dc3f2bda14c01ae1d84a72e94280654abfc2eef587794b55a88a03a6faae57f6b9243c99f7301f7c30b22d6495414b5af \
-    --set connector.dnsServer=8.8.8.8 \
-    --set connector.logLevel=7
-
-
-docker run -d    --env TENANT_URL="https://beamreach.dev.opstg.com"    --env ACCESS_TOKEN="eyJ0eXAiOiJEQVQiLCJhbGciOiJFUzI1NiIsImtpZCI6Imh4TU05R0hEdXJSUi12TElEWEJDNzlsQXFPeWRYY1dCejY1b09HaVlKVzAifQ.eyJudCI6IkFOIiwiYWlkIjoiNDEiLCJkaWQiOiJkZXZpY2UtYW5jLTItYW4tMTA5IiwianRpIjoiMjBiMzVjZWMtMDBjMy00OGE2LTljNWEtNzUyNWZkNjYxYWE1IiwiaXNzIjoidHdpbmdhdGUtZGV2IiwiYXVkIjoiYmVhbXJlYWNoIiwiZXhwIjoxNTkyOTQ2NDMyLCJpYXQiOjE1OTI5NDYxMzIsImFwX2V4cCI6eyIxIjoxNTkyOTQ5NzMyfSwidmVyIjoiMSJ9.E89eYwb1aXqZbRhWhVykZGlaFYt1wxvTCrE1bfO30z2jQKyv883O37KykXEDfZeK1AGWks0Hlz0Y1PMsD_JBgA"    --env REFRESH_TOKEN="3a591a8b90c1f6eeee2fdf98c90e84f022622ac1273b4a26eef69f7227da6b3b88a4eb80e4cbcab7058c18c2bbc99b8353a7b38dc3f2bda14c01ae1d84a72e94280654abfc2eef587794b55a88a03a6faae57f6b9243c99f7301f7c30b22d6495414b5af"    --name "BeamReachANCinstance41"    --restart=unless-stopped    twingate/access-node:latest
