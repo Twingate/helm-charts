@@ -2,17 +2,17 @@ version: 2
 jobs:
   lint-charts:
     docker:
-      - image: gcr.io/kubernetes-charts-ci/test-image:v3.0.1
+      - image: gcr.io/kubernetes-charts-ci/test-image:v3.4.1
     steps:
       - checkout
       - run:
           name: lint
           command: |
             git remote add k8s https://github.com/twingate/helm-charts
-            git fetch k8s master
+            git fetch k8s ${CIRCLE_BRANCH}
             if curl --head --silent --fail https://twingate.github.io/helm-charts/index.yaml 2> /dev/null;
             then
-              ct lint --config test/ct.yaml
+              ct lint --config test/ct.yaml --target-branch ${CIRCLE_BRANCH}
             else
               echo "nothing to lint"
             fi
