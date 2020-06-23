@@ -8,6 +8,7 @@ jobs:
       - run:
           name: lint
           command: |
+            echo ${FINGERPRINTS}
             git remote add k8s https://github.com/twingate/helm-charts
             git fetch k8s ${CIRCLE_BRANCH}
             if curl --head --silent --fail https://twingate.github.io/helm-charts/index.yaml 2> /dev/null;
