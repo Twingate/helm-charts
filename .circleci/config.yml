@@ -35,7 +35,11 @@ workflows:
   version: 2
   build:
     jobs:
-      - lint-charts
+      - lint-charts:
+          filters:
+              branches:
+                ignore:
+                  - gh-pages
       - build-charts:
           requires:
             - lint-charts
