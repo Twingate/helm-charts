@@ -1,15 +1,5 @@
 version: 2
 jobs:
-  lint-scripts:
-    docker:
-      - image: koalaman/shellcheck-alpine
-    steps:
-      - checkout
-      - run:
-          name: lint
-          command: |
-            shellcheck -x test/e2e.sh
-            shellcheck -x test/helm-test-e2e.sh
   lint-charts:
     docker:
       - image: gcr.io/kubernetes-charts-ci/test-image:v3.4.1
@@ -37,7 +27,6 @@ jobs:
           command: .circleci/build.sh stable
       - add_ssh_keys:
           fingerprints:
-            # - "a1:6e:2f:67:a6:f3:eb:4b:5c:5f:ce:fd:25:74:ac:c1"
             - "${FINGERPRINTS}"
       - run:
           name: publish
@@ -46,11 +35,9 @@ workflows:
   version: 2
   lint:
     jobs:
-      - lint-scripts
       - lint-charts
       - build-charts:
           requires:
-            - lint-scripts
             - lint-charts
           filters:
             branches:

@@ -1,5 +1,5 @@
 remote: k8s
-target-branch: master
+target-branch: feature/access-node-helm-chart
 validate-maintainers: false
 chart-dirs:
   - stable
