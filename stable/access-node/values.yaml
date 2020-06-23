@@ -33,6 +33,8 @@ affinity: {}
 
 accessNode:
   logLevel: 3
-  tenantUrl: {}
+  tenant: {}
+  url: "twingate.com"
   accessToken: {}
   refreshToken: {}
+  dnsServer: {}

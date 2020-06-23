@@ -23,8 +23,8 @@ This chart bootstraps a [Twingate Access Node](https://hub.docker.com/r/twingate
 To install the chart with the release name `my-release`:
 
 ```console
-$ helm repo add springboard https://helm-charts.springboardvr.com
-$ helm install my-release springboard/twingate -n [namespace]
+$ helm repo add twingate https://twingate.github.io/helm-charts
+$ helm install my-release twingate/access-node -n [namespace]
 ```
 
 These commands deploy Twingate on the Kubernetes cluster in the default configuration. The [Parameters](#parameters) section lists the parameters that can be configured during installation.
@@ -56,20 +56,7 @@ The following table lists the configurable parameters of the Twingate chart and 
 | `fullnameOverride`                      | String to fully override twingate.fullname template                         | `nil`                                                   |
 | `replicas`                              | Number of replicas for the application                                      | `1`                                                     |
 | `applicationPort`                       | Port where the application will be running                                  | `80`                                                    |
-| `extraEnv`                              | Any extra environment variables to be pass to the pods                      | `{}`                                                    |
-| `envFrom`                               | An envFrom for the deployment, for adding a secret as ENV vars              | `{}`                                                    |
 | `affinity`                              | Map of node/pod affinities                                                  | `{}` (The value is evaluated as a template)             |
 | `nodeSelector`                          | node labels for pod assignment                                              | `{}` (The value is evaluated as a template)             |
 | `tolerations`                           | Tolerations for pod assignment                                              | `[]` (The value is evaluated as a template)             |
-
-
-The above command clones the remote git repository to the `/app/` directory  of the container. Additionally it sets the number of `replicas` to `2`.
-
-Alternatively, a YAML file that specifies the values for the above parameters can be provided while installing the chart. For example,
-
-```console
-$ helm install my-release -f values.yaml springboard/twingate
-```
-
-> **Tip**: You can use the default [values.yaml](values.yaml)
-
+| `resources`                             | Resrouce limitations                                                         | `{}` (The value is evaluated as a template)             |
