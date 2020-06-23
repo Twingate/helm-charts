@@ -20,7 +20,13 @@ jobs:
           command: |
             git remote add k8s https://github.com/twingate/helm-charts
             git fetch k8s master
-            ct lint --config test/ct.yaml
+            if curl --head --silent --fail https://twingate.github.io/helm-charts 2> /dev/null;
+            then
+              ct lint --config test/ct.yaml
+            else
+              echo "nothing to lint"
+            fi
+            
   build-charts:
     docker:
       - image: anchorfree/k8s-toolbox:v0.10.0
