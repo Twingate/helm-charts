@@ -37,7 +37,7 @@ jobs:
           command: .circleci/build.sh stable
       - add_ssh_keys:
           fingerprints:
-            - "a1:6e:2f:67:a6:f3:eb:4b:5c:5f:ce:fd:25:74:ac:c1"
+            - ${FINGERPRINTS}
       - run:
           name: publish
           command: .circleci/publish.sh https://twingate.github.io/helm-charts/packages
