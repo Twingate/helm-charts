@@ -5,5 +5,5 @@
 2. Add repo to your helm as:
 
 ```
-helm repo add afcharts https://twingate.github.io/helm-charts
+helm repo add twingate https://twingate.github.io/helm-charts
 ```

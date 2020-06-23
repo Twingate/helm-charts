@@ -35,6 +35,9 @@ jobs:
       - run:
           name: build
           command: .circleci/build.sh stable
+      - add_ssh_keys:
+          fingerprints:
+            - ${FINGERPRINTS}
       - run:
           name: publish
           command: .circleci/publish.sh https://twingate.github.io/helm-charts/packages
