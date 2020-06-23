@@ -2,7 +2,7 @@ version: 2
 jobs:
   lint-charts:
     docker:
-      - image: gcr.io/kubernetes-charts-ci/test-image:v3.4.1
+      - image: gcr.io/kubernetes-charts-ci/test-image:v3.0.1
     steps:
       - checkout
       - run:
@@ -33,7 +33,7 @@ jobs:
           command: .circleci/publish.sh https://twingate.github.io/helm-charts/packages
 workflows:
   version: 2
-  lint:
+  build:
     jobs:
       - lint-charts
       - build-charts:
