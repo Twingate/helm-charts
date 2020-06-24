@@ -33,7 +33,7 @@ affinity: {}
 
 connector:
   logLevel: "error"
-  tenant: 
+  organization: 
   url: "twingate.com"
   accessToken: 
   refreshToken: 
