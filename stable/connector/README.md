@@ -15,7 +15,7 @@ This chart bootstraps a [Twingate Connector](https://hub.docker.com/r/twingate/c
 
 To install the chart with the release name `my-release`:
 
-```console
+```shell
 $ helm repo add twingate https://twingate.github.io/helm-charts
 $ helm upgrade --install my-release twingate/connector -n [namespace] \
     --set connector.tenant=[tenant] \
@@ -31,7 +31,7 @@ These commands deploy Twingate on the Kubernetes cluster in the default configur
 
 To uninstall/delete the `my-release` deployment:
 
-```console
+```shell
 $ helm del my-release -n [namespace]
 ```
 
