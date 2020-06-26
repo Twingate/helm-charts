@@ -4,3 +4,6 @@ home: https://get.twingate.com
 description: Twingate Connector helm chart
 name: connector
 version: 0.1.1
+maintainers: 
+  - name: Roman Kournjaev
+    email: roman@twingate.com
