@@ -7,7 +7,7 @@ image:
   tag: latest
   pullPolicy: Always
 
-resources: 
+resources:
   requests:
     cpu: 50m
     memory: 1G
@@ -20,8 +20,9 @@ affinity: {}
 
 connector:
   logLevel: "error"
-  network: 
+  network:
   url: "twingate.com"
-  accessToken: 
-  refreshToken: 
-  dnsServer: 
+  accessToken:
+  refreshToken:
+  dnsServer:
+  
