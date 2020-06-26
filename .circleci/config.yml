@@ -8,7 +8,7 @@ jobs:
       - run:
           name: lint
           command: |
-            ct lint --chart-dirs stable --validate-maintainers false
+            ct lint --config test/ct.yaml
             
   build-and-publish-charts:
     docker:
