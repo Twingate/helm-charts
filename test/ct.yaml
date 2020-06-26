@@ -1,7 +1,0 @@
-remote: k8s
-validate-maintainers: false
-chart-dirs:
-  - stable
-chart-repos:
-  - stable=https://twingate.github.io/helm-charts
-helm-extra-args: --timeout 600

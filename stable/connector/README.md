@@ -18,7 +18,7 @@ To install the chart with the release name `my-release`:
 ```shell
 $ helm repo add twingate https://twingate.github.io/helm-charts
 $ helm upgrade --install my-release twingate/connector -n [namespace] \
-    --set connector.organization=[organization] \
+    --set connector.network=[network] \
     --set connector.accessToken=[accessToken] \
     --set connector.refreshToken=[refreshToken]
 ```
@@ -43,8 +43,8 @@ The following table lists the configurable parameters of the Twingate chart and 
 
 | Parameter                               | Description                                                                 | Default                                                 |
 |-----------------------------------------|-----------------------------------------------------------------------------|---------------------------------------------------------|
-| `connector.organization`                | The Organization Name (required)                                            |                                                         |
-| `connector.url`                         | Twingate Service URL                                                        | `twingate.com`                                          |
+| `connector.network`                     | The Twingate network name, eg. acme (required)                              |                                                         |
+| `connector.url`                         | The Twingate service domain                                                 | `twingate.com`                                          |
 | `connector.accessToken`                 | Access Token (required)                                                     |                                                         |
 | `connector.refreshToken`                | Refresh Token (required)                                                    |                                                         |
 | `connector.logLevel`                    | Log Level - supported : [error, warning, info, debug]                       | `error`                                                 |
@@ -52,12 +52,15 @@ The following table lists the configurable parameters of the Twingate chart and 
 | `image.registry`                        | Twingate image registry                                                     | `docker.io`                                             |
 | `image.repository`                      | Twingate image name                                                         | `twingate/connector`                                    |
 | `image.tag`                             | Twingate image tag                                                          | `latest`                                                |
-| `image.pullPolicy`                      | Twingate image pull policy                                                  | `IfNotPresent`                                          |
+| `image.pullPolicy`                      | Twingate image pull policy                                                  | `Always`                                          |
 | `image.pullSecrets`                     | Specify docker-registry secret names as an array                            | `[]` (does not add image pull secrets to deployed pods) |
 | `nameOverride`                          | String to partially override twingate.fullname template                     | `nil`                                                   |
 | `fullnameOverride`                      | String to fully override twingate.fullname template                         | `nil`                                                   |
-| `replicas`                              | Number of replicas for the application                                      | `1`                                                     |
 | `affinity`                              | Map of node/pod affinities                                                  | `{}` (The value is evaluated as a template)             |
 | `nodeSelector`                          | node labels for pod assignment                                              | `{}` (The value is evaluated as a template)             |
 | `tolerations`                           | Tolerations for pod assignment                                              | `[]` (The value is evaluated as a template)             |
 | `resources`                             | Resrouce limitations                                                        | `{}` (The value is evaluated as a template)             |
+
+
+
+Anti affinity to deployments ( ?? research )

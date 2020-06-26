@@ -2,28 +2,15 @@
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 
-replicaCount: 1
-
 image:
-  # for latest stable builds use      twingate/access-node:latest
-  # for internal rc builds use        gcr.io/twingate-prod/twingate-access-node:latest-master
-  # for internal dev builds use       gcr.io/twingate-prod/twingate-access-node:latest-dev
-  repository: twingate/access-node
+  repository: twingate/connector
   tag: latest
   pullPolicy: Always
 
-
-resources: {}
-  # We usually recommend not to specify default resources and to leave this as a conscious
-  # choice for the user. This also increases chances charts run on environments with little
-  # resources, such as Minikube. If you do want to specify resources, uncomment the following
-  # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
-  # limits:
-  #   cpu: 100m
-  #   memory: 128Mi
-  # requests:
-  #   cpu: 100m
-  #   memory: 128Mi
+resources: 
+  requests:
+    cpu: 50m
+    memory: 1G
 
 nodeSelector: {}
 
@@ -33,7 +20,7 @@ affinity: {}
 
 connector:
   logLevel: "error"
-  organization: 
+  network: 
   url: "twingate.com"
   accessToken: 
   refreshToken: 

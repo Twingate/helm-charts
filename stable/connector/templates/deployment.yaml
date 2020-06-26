@@ -1,27 +1,27 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ include "an.fullname" . }}
+  name: {{ include "cn.fullname" . }}
   labels:
-{{ include "an.labels" . | indent 4 }}
+{{ include "cn.labels" . | indent 4 }}
 spec:
-  replicas: {{ .Values.replicaCount }}
+  replicas: 1
   selector:
     matchLabels:
-      app.kubernetes.io/name: {{ include "an.name" . }}
+      app.kubernetes.io/name: {{ include "cn.name" . }}
       app.kubernetes.io/instance: {{ .Release.Name }}
   template:
     metadata:
       annotations:
-        checksum/secret-an-config: {{ include (print $.Template.BasePath "/secret.yaml") . | sha256sum }}
+        checksum/secret-cn-config: {{ include (print $.Template.BasePath "/secret.yaml") . | sha256sum }}
       labels:
-        app.kubernetes.io/name: {{ include "an.name" . }}
+        app.kubernetes.io/name: {{ include "cn.name" . }}
         app.kubernetes.io/instance: {{ .Release.Name }}
     spec:
       volumes:
-        - name: secret-config
+        - name: connector-configuration
           secret:
-            secretName: {{ include "an.fullname" . }}-config    
+            secretName: {{ include "cn.fullname" . }}-config    
     {{- with .Values.imagePullSecrets }}
       imagePullSecrets:
         {{- toYaml . | nindent 8 }}
@@ -32,7 +32,7 @@ spec:
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           env:
             - name: CONFIG_FILE
-              value: "/tg-config/connector.json"
+              value: "/connector.json"
             - name: LOG_LEVEL
               {{ if eq .Values.connector.logLevel "warning" }}
               value: "4"
@@ -44,8 +44,8 @@ spec:
               value: "3"
               {{ end }}
           volumeMounts:
-            - name: secret-config
-              mountPath: /tg-config
+            - name: connector-configuration
+              mountPath: /
               readOnly: true
           resources:
             {{- toYaml .Values.resources | nindent 12 }}

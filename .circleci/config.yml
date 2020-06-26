@@ -8,29 +8,24 @@ jobs:
       - run:
           name: lint
           command: |
-            git remote add k8s https://github.com/twingate/helm-charts
-            git fetch k8s ${CIRCLE_BRANCH}
-            if curl --head --silent --fail https://twingate.github.io/helm-charts/index.yaml 2> /dev/null;
-            then
-              ct lint --config test/ct.yaml --target-branch ${CIRCLE_BRANCH}
-            else
-              echo "nothing to lint"
-            fi
+            ct lint --chart-dirs=stable
             
-  build-charts:
+  build-and-publish-charts:
     docker:
-      - image: anchorfree/k8s-toolbox:v0.10.0
+      - image: alpine/helm:3.2.4
     steps:
       - checkout
       - run:
           name: build
           command: .circleci/build.sh stable
+  
       - add_ssh_keys:
           fingerprints:
             - a1:6e:2f:67:a6:f3:eb:4b:5c:5f:ce:fd:25:74:ac:c1
       - run:
           name: publish
-          command: .circleci/publish.sh https://twingate.github.io/helm-charts/packages
+          command: .circleci/publish.sh 
+
 workflows:
   version: 2
   build:
@@ -40,11 +35,11 @@ workflows:
               branches:
                 ignore:
                   - gh-pages
-      - build-charts:
+      - build-and-publish-charts:
           requires:
             - lint-charts
           filters:
             branches:
               only:
                 - master
-                - feature/access-node-helm-chart
+                # - feature/access-node-helm-chart
