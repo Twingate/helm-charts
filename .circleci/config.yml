@@ -8,7 +8,7 @@ jobs:
       - run:
           name: lint
           command: |
-            ct lint --chart-dirs stable 
+            ct lint --chart-dirs stable --validate-maintainers false
             
   build-and-publish-charts:
     docker:
