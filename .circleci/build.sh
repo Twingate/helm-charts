@@ -2,7 +2,6 @@
 
 FOLDER="packages"
 
-# peraration 
 mkdir -p ${FOLDER}
 # build each chart separately
 for i in $(ls -1 ${1})
