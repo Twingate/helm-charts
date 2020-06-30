@@ -1,0 +1,47 @@
+version: 2
+jobs:
+  lint-charts:
+    docker:
+      - image: gcr.io/kubernetes-charts-ci/test-image:v3.4.1
+    steps:
+      - checkout
+      - run:
+          name: lint
+          command: |
+            ct lint --config test/ct.yaml
+            
+  build-and-publish-charts:
+    docker:
+      - image: alpine/helm:3.2.4
+    steps:
+      - run:
+          name: provision
+          command: |
+            apk update && apk upgrade && apk add --no-cache bash git openssh
+      - checkout
+      - run:
+          name: build
+          command: .circleci/build.sh stable
+      - add_ssh_keys:
+          fingerprints:
+            - a1:6e:2f:67:a6:f3:eb:4b:5c:5f:ce:fd:25:74:ac:c1
+      - run:
+          name: publish
+          command: .circleci/publish.sh 
+
+workflows:
+  version: 2
+  build:
+    jobs:
+      - lint-charts:
+          filters:
+              branches:
+                ignore:
+                  - gh-pages
+      - build-and-publish-charts:
+          requires:
+            - lint-charts
+          filters:
+            branches:
+              only:
+                - master
