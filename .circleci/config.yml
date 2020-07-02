@@ -45,4 +45,3 @@ workflows:
             branches:
               only:
                 - master
-                - hotfix/fix-mounting-point-for-config
