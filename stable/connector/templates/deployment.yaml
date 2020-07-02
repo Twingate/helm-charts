@@ -32,7 +32,7 @@ spec:
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           env:
             - name: CONFIG_FILE
-              value: "/connector.json"
+              value: "/config/connector.json"
             - name: LOG_LEVEL
               {{ if eq .Values.connector.logLevel "warning" }}
               value: "4"
@@ -45,7 +45,7 @@ spec:
               {{ end }}
           volumeMounts:
             - name: connector-configuration
-              mountPath: /
+              mountPath: /config
               readOnly: true
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
