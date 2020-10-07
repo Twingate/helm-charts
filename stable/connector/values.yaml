@@ -4,7 +4,7 @@
 
 image:
   repository: twingate/connector
-  tag: latest
+  tag: 1
   pullPolicy: Always
 
 resources:
