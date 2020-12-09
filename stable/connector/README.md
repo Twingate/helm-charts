@@ -56,7 +56,7 @@ The following table lists the configurable parameters of the Twingate chart and 
 | `image.pullSecrets`                     | Specify docker-registry secret names as an array                            | `[]` (does not add image pull secrets to deployed pods) |
 | `nameOverride`                          | String to partially override twingate.fullname template                     | `nil`                                                   |
 | `fullnameOverride`                      | String to fully override twingate.fullname template                         | `nil`                                                   |
-| `securityContext.enabled`               | Enable the securityContext. See more in values file                         | `false`                                                 |
+| `ICMPSupport.enabled`                   | Enable the ICMP securityContext. See more in values file                    | `false`                                                 |
 | `affinity`                              | Map of node/pod affinities                                                  | `{}` (The value is evaluated as a template)             |
 | `nodeSelector`                          | node labels for pod assignment                                              | `{}` (The value is evaluated as a template)             |
 | `tolerations`                           | Tolerations for pod assignment                                              | `[]` (The value is evaluated as a template)             |
