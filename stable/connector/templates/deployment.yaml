@@ -20,7 +20,7 @@ spec:
       imagePullSecrets:
         {{- toYaml . | nindent 8 }}
     {{- end }}
-    {{- if .Values.ICMPSupport.enabled }}
+    {{- if .Values.icmpSupport.enabled }}
       securityContext:
         sysctls:
         - name: net.ipv4.ping_group_range
