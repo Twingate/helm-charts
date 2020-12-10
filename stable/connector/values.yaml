@@ -18,6 +18,13 @@ tolerations: []
 
 affinity: {}
 
+# Enable the Linux kernel's net.ipv4.ping_group_range parameter to allow ping connector.
+# Use only if you enable this sysctls in your cluster (disabled by default)
+# Or have Kubernetes master higher than 1.18
+# (https://kubernetes.io/docs/tasks/administer-cluster/sysctl-cluster/#enabling-unsafe-sysctls)
+icmpSupport:
+  enabled: false
+
 connector:
   logLevel: "error"
   network:
