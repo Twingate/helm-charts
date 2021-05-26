@@ -12,6 +12,8 @@ resources:
     cpu: 50m
     memory: 1G
 
+additionalLabels: {}
+
 nodeSelector: {}
 
 tolerations: []
