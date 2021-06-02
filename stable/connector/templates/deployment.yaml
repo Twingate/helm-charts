@@ -4,6 +4,9 @@ metadata:
   name: {{ include "cn.fullname" . }}
   labels:
 {{ include "cn.labels" . | indent 4 }}
+{{- if .Values.additionalLabels -}}
+  {{- toYaml .Values.additionalLabels | nindent 4 }}
+{{- end }}
 spec:
   replicas: 1
   selector:
@@ -15,11 +18,10 @@ spec:
       labels:
         app.kubernetes.io/name: {{ include "cn.name" . }}
         app.kubernetes.io/instance: {{ .Release.Name }}
+        {{- if .Values.additionalLabels -}}
+        {{- toYaml .Values.additionalLabels | nindent 8 }}
+        {{- end }}
     spec:
-    {{- with .Values.imagePullSecrets }}
-      imagePullSecrets:
-        {{- toYaml . | nindent 8 }}
-    {{- end }}
     {{- if .Values.icmpSupport.enabled }}
       securityContext:
         sysctls:
