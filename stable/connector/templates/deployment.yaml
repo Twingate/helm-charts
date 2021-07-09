@@ -44,15 +44,19 @@ spec:
               value: "{{ .Values.connector.dnsServer }}"
               {{- end }}
             - name: LOG_LEVEL
-              {{ if eq .Values.connector.logLevel "warning" }}
+              {{- if eq .Values.connector.logLevel "warning" }}
               value: "4"
-              {{ else if eq .Values.connector.logLevel "info" }}
+              {{- else if eq .Values.connector.logLevel "info" }}
               value: "6"
-              {{ else if eq .Values.connector.logLevel "debug" }}
+              {{- else if eq .Values.connector.logLevel "debug" }}
               value: "7"
-              {{ else }}
+              {{- else }}
               value: "3"
-              {{ end }}
+              {{- end }}
+              {{- range $key, $value := .Values.env }}
+            - name: {{ $key }}
+              value: {{ $value | quote }}
+              {{- end }}
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
       {{- with .Values.nodeSelector }}

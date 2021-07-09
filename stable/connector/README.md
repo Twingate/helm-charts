@@ -62,6 +62,4 @@ The following table lists the configurable parameters of the Twingate chart and 
 | `tolerations`                           | Tolerations for pod assignment                                              | `[]` (The value is evaluated as a template)             |
 | `resources`                             | Resrouce limitations                                                        | `{}` (The value is evaluated as a template)             |
 | `additionalLabels`                      | Additional labels for the deployment                                        | `{}` (The value is evaluated as a template)             |
-
-
-Anti affinity to deployments ( ?? research )
+| `env`                                   | Additional environment variables for the deployment                         | `{}` (The value is evaluated as a template)             |

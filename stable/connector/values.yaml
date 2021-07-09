@@ -20,6 +20,14 @@ tolerations: []
 
 affinity: {}
 
+## Extra environment variables that will be pass onto connector pod
+##
+## env:
+##   FOO: bar
+##
+
+env: {}
+
 # Enable the Linux kernel's net.ipv4.ping_group_range parameter to allow ping connector.
 # Use only if you enable this sysctls in your cluster (disabled by default)
 # Or have Kubernetes master higher than 1.18
