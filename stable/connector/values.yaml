@@ -21,7 +21,7 @@ tolerations: []
 affinity: {}
 
 ## Extra environment variables that will be pass onto connector pod
-## 
+##
 ## env:
 ##   FOO: bar
 ##
