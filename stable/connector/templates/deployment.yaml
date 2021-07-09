@@ -53,9 +53,10 @@ spec:
               {{- else }}
               value: "3"
               {{- end }}
-          {{- with .Values.env }}
-          {{- toYaml . | nindent 12 }}
-          {{- end }}
+              {{- range $key, $value := .Values.env }}
+            - name: {{ $key }}
+              value: {{ $value | quote }}
+              {{- end }}
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
       {{- with .Values.nodeSelector }}
