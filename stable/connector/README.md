@@ -27,6 +27,23 @@ These commands deploy Twingate on the Kubernetes cluster in the default configur
 
 > **Tip**: List all releases using `helm ls -n [namespace]`
 
+### Using an Existing Secret for Access/Refresh Tokens
+
+Rather than passing in `connector.accessToken` and `connector.refreshToken`, you may provide the name of an existing secret that contains those values via `connector.existingSecret`.
+
+Example secret:
+
+```yaml
+apiVersion: v1
+kind: Secret
+metadata:
+  name: my-secret
+type: Opaque
+data:
+  TWINGATE_ACCESS_TOKEN: "your access token"
+  TWINGATE_REFRESH_TOKEN: "your refresh token"
+```
+
 ## Uninstalling the Chart
 
 To uninstall/delete the `my-release` deployment:
@@ -45,8 +62,9 @@ The following table lists the configurable parameters of the Twingate chart and 
 |-----------------------------------------|-----------------------------------------------------------------------------|---------------------------------------------------------|
 | `connector.network`                     | The Twingate network name, eg. acme (required)                              |                                                         |
 | `connector.url`                         | The Twingate service domain                                                 | `twingate.com`                                          |
-| `connector.accessToken`                 | Access Token (required)                                                     |                                                         |
-| `connector.refreshToken`                | Refresh Token (required)                                                    |                                                         |
+| `connector.accessToken`                 | Access Token (required unless `connector.existingSecret` is specified)      |                                                         |
+| `connector.refreshToken`                | Refresh Token (required unless `connector.existingSecret` is specified)     |                                                         |
+| `connector.existingSecret`              | The name of an existing secret to use for the access and refresh tokens     |                                                         |
 | `connector.logLevel`                    | Log Level - supported : [error, warning, info, debug]                       | `error`                                                 |
 | `connector.dnsServer`                   | Custom DNS server                                                           |                                                         |
 | `image.registry`                        | Twingate image registry                                                     | `docker.io`                                             |

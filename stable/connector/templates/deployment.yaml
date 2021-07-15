@@ -32,13 +32,17 @@ spec:
         - name: {{ .Chart.Name }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
+          envFrom:
+            - secretRef:
+                {{- if .Values.connector.existingSecret }}
+                name: {{ .Values.connector.existingSecret }}
+                {{- else }}
+                name: {{ include "cn.fullname" . }}
+                {{- end }}
+                optional: false
           env:
             - name: TWINGATE_URL
               value: "https://{{ required "Network name required" .Values.connector.network }}.{{ .Values.connector.url }}"
-            - name: TWINGATE_ACCESS_TOKEN
-              value: "{{ required "Access Token required" .Values.connector.accessToken }}"
-            - name: TWINGATE_REFRESH_TOKEN
-              value: "{{ required "Refresh Token required" .Values.connector.refreshToken }}"
               {{- if .Values.connector.dnsServer }}
             - name: TWINGATE_DNS
               value: "{{ .Values.connector.dnsServer }}"
