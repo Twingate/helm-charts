@@ -40,8 +40,8 @@ metadata:
   name: my-secret
 type: Opaque
 data:
-  TWINGATE_ACCESS_TOKEN: "your access token"
-  TWINGATE_REFRESH_TOKEN: "your refresh token"
+  TWINGATE_ACCESS_TOKEN: "your access token base64 encoded"
+  TWINGATE_REFRESH_TOKEN: "your refresh token base64 encoded"
 ```
 
 ## Uninstalling the Chart
