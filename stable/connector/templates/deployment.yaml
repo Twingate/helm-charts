@@ -21,6 +21,10 @@ spec:
         {{- if .Values.additionalLabels -}}
         {{- toYaml .Values.additionalLabels | nindent 8 }}
         {{- end }}
+    {{- with .Values.podAnnotations }}
+      annotations:
+        {{- toYaml . | nindent 8 }}
+    {{- end }}
     spec:
     {{- if .Values.icmpSupport.enabled }}
       securityContext:
