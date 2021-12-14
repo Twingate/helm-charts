@@ -12,7 +12,7 @@ jobs:
 
   build-and-publish-charts:
     docker:
-      - image: alpine/helm:3.2.4
+      - image: alpine/helm:3.7.0
     steps:
       - run:
           name: provision
