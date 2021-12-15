@@ -9,6 +9,6 @@ entries:
     home: https://www.twingate.com
     name: connector
     urls:
-    - packages/connector-0.1.9.tgz
+    - https://twingate.github.io/helm-charts/packages/connector-0.1.9.tgz
     version: 0.1.9
 generated: "2021-12-09T04:58:11.392435878Z"
