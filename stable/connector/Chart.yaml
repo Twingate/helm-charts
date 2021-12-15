@@ -3,4 +3,4 @@ appVersion: latest
 home: https://www.twingate.com
 description: Twingate Connector helm chart
 name: connector
-version: 0.1.9
+version: 0.1.10

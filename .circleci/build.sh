@@ -10,4 +10,6 @@ do
     helm package -d ${FOLDER} ${1}/${i} 
 done
 
-helm repo index .
+curl https://twingate.github.io/helm-charts/index.yaml > index.yaml
+
+helm repo index . --url https://twingate.github.io/helm-charts --merge index.yaml

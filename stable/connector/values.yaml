@@ -10,7 +10,7 @@ image:
 resources:
   requests:
     cpu: 50m
-    memory: 1G
+    memory: 200m
 
 additionalLabels: {}
 

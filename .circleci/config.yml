@@ -12,12 +12,12 @@ jobs:
 
   build-and-publish-charts:
     docker:
-      - image: alpine/helm:3.2.4
+      - image: alpine/helm:3.7.0
     steps:
       - run:
           name: provision
           command: |
-            apk update && apk upgrade && apk add --no-cache bash git openssh
+            apk update && apk upgrade && apk add --no-cache bash git openssh curl
       - checkout
       - run:
           name: build
