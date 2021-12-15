@@ -6,6 +6,5 @@ git add packages
 git add index.yaml
 git commit -m "publish ${CIRCLE_BUILD_NUM}"
 git checkout gh-pages
-git merge main
+git merge master --strategy-option theirs
 git push origin gh-pages
-

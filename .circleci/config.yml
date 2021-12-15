@@ -17,7 +17,7 @@ jobs:
       - run:
           name: provision
           command: |
-            apk update && apk upgrade && apk add --no-cache bash git openssh
+            apk update && apk upgrade && apk add --no-cache bash git openssh curl
       - checkout
       - run:
           name: build
