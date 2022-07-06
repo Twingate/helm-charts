@@ -28,6 +28,7 @@ spec:
     spec:
     {{- if .Values.icmpSupport.enabled }}
       securityContext:
+        runAsNonRoot: true
         sysctls:
         - name: net.ipv4.ping_group_range
           value: "0  2147483647"
@@ -65,6 +66,8 @@ spec:
             - name: {{ $key }}
               value: {{ $value | quote }}
               {{- end }}
+          securityContext:
+            allowPrivilegeEscalation: false
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
       {{- with .Values.nodeSelector }}
