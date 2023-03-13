@@ -37,6 +37,8 @@ env: {}
 icmpSupport:
   enabled: false
 
+namespace:
+
 connector:
   logLevel: "error"
   network:
