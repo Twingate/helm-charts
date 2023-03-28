@@ -11,8 +11,8 @@ metadata:
     app.kubernetes.io/managed-by: Helm
 type: Opaque
 data:
-  TWINGATE_ACCESS_TOKEN: "VEVTVF9BVA=="
-  TWINGATE_REFRESH_TOKEN: "VEVTVF9SVA=="
+  TWINGATE_ACCESS_TOKEN: "QUNDRVNTX1RPS0VO"
+  TWINGATE_REFRESH_TOKEN: "UkVGUkVTSF9UT0tFTg=="
 ---
 # Source: connector/templates/deployment.yaml
 apiVersion: apps/v1

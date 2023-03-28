@@ -41,5 +41,5 @@ connector:
   logLevel: "error"
   network: "test-tenant"
   url: "twingate.com"
-  accessToken: "TEST_AT"
-  refreshToken: "TEST_RT"
+  accessToken: "ACCESS_TOKEN"
+  refreshToken: "REFRESH_TOKEN"
