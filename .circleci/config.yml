@@ -48,9 +48,15 @@ workflows:
               branches:
                 ignore:
                   - gh-pages
+      - golden-tests:
+          filters:
+            branches:
+              ignore:
+                - gh-pages
       - build-and-publish-charts:
           requires:
             - lint-charts
+            - golden-tests
           filters:
             branches:
               only:
