@@ -10,6 +10,16 @@ jobs:
           command: |
             ct lint --config test/ct.yaml --all
 
+  golden-tests:
+    docker:
+      - image: golang:1.20-alpine
+    steps:
+      - checkout
+      - run:
+          name: test
+          command: |
+            go test
+
   build-and-publish-charts:
     docker:
       - image: alpine/helm:3.11.2
