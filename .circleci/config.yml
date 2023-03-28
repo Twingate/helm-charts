@@ -2,13 +2,13 @@ version: 2
 jobs:
   lint-charts:
     docker:
-      - image: quay.io/helmpack/chart-testing:v3.4.0
+      - image: quay.io/helmpack/chart-testing:v3.8.0
     steps:
       - checkout
       - run:
           name: lint
           command: |
-            ct lint --config test/ct.yaml
+            ct lint --config test/ct.yaml --all
 
   build-and-publish-charts:
     docker:
