@@ -1,16 +1,15 @@
 package golden
 
 import (
-	"flag"
-	"fmt"
-	"io/ioutil"
-	"os"
-	"path/filepath"
-	"regexp"
-	"strings"
-	"testing"
+    "flag"
+    "fmt"
+    "os"
+    "path/filepath"
+    "regexp"
+    "strings"
+    "testing"
 
-	"github.com/gruntwork-io/terratest/modules/helm"
+    "github.com/gruntwork-io/terratest/modules/helm"
 )
 
 var update = flag.Bool("update", false, "update golden test output files")
@@ -40,13 +39,13 @@ func TestHelmRender(t *testing.T) {
 			output = fmt.Sprintf("%s\n", string(bytes))
 
 			if *update {
-				err := ioutil.WriteFile(goldenFile, []byte(output), 0644)
+				err := os.WriteFile(goldenFile, []byte(output), 0644)
 				if err != nil {
 					t.Fatal(err)
 				}
 			}
 
-			expected, err := ioutil.ReadFile(goldenFile)
+			expected, err := os.ReadFile(goldenFile)
 			if err != nil {
 				t.Fatal(err)
 			}
