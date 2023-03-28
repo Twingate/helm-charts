@@ -1,4 +1,6 @@
 version: 2
+orbs:
+  go: circleci/go@1.7.3
 jobs:
   lint-charts:
     docker:
@@ -11,14 +13,18 @@ jobs:
             ct lint --config test/ct.yaml --all
 
   golden-tests:
-    docker:
-      - image: golang:1.20-alpine
+    executor:
+      name: go/default
+      tag: '1.20'
     steps:
       - checkout
-      - run:
-          name: test
-          command: |
-            go test
+      - go/load-cache
+      - go/mod-download
+      - go/save-cache
+      - go/test:
+          covermode: atomic
+          failfast: true
+          race: true
 
   build-and-publish-charts:
     docker:
