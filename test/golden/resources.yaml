@@ -7,7 +7,6 @@ resources:
     memory: 128Mi
 
 connector:
-  logLevel: "error"
   network: "test-tenant"
   url: "twingate.com"
   accessToken: "ACCESS_TOKEN"

@@ -17,7 +17,6 @@ icmpSupport:
   enabled: false
 
 connector:
-  logLevel: "error"
   network: "test-tenant"
   url: "twingate.com"
   accessToken: "ACCESS_TOKEN"

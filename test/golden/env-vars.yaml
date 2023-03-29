@@ -2,7 +2,6 @@ env:
   FOO: "bar"
 
 connector:
-  logLevel: "error"
   network: "test-tenant"
   url: "twingate.com"
   accessToken: "ACCESS_TOKEN"
