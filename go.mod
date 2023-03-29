@@ -1,4 +1,4 @@
-module twingate
+module twingate-helm-charts
 
 go 1.20
 
