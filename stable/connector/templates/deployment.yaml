@@ -32,6 +32,9 @@ spec:
         - name: net.ipv4.ping_group_range
           value: "0  2147483647"
     {{- end }}
+    {{- if .Values.hostNetwork }}
+      hostNetwork: true
+    {{- end }}
       containers:
         - name: {{ .Chart.Name }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
