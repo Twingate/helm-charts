@@ -47,7 +47,7 @@ spec:
           env:
             - name: TWINGATE_URL
               value: "https://test-tenant.twingate.com"
-            - name: LOG_LEVEL
+            - name: TWINGATE_LOG_LEVEL
               value: "3"
             - name: FOO
               value: "bar"
