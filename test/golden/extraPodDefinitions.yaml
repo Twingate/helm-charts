@@ -6,9 +6,8 @@ connector:
   accessToken: "ACCESS_TOKEN"
   refreshToken: "REFRESH_TOKEN"
 
-extraPodDefinitions:
-  dnsPolicy: "None"
-  dnsConfig:
+  podDnsPolicy: "None"
+  podDnsConfig:
     nameservers:
       - 192.0.2.1 # this is an example
     searches:

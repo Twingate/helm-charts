@@ -82,4 +82,7 @@ The following table lists the configurable parameters of the Twingate chart and 
 | `additionalLabels`                      | Additional labels for the deployment                                        | `{}` (The value is evaluated as a template)             |
 | `podAnnotations`                        | Map of annotations to add to pods                                           | `{}`                                                    |
 | `env`                                   | Additional environment variables for the deployment                         | `{}` (The value is evaluated as a template)             |
-| `hostNetwork`                           | Enable/Disable host network for the pods                                    | `false` (Disabled by default)  |
+| `hostNetwork`                           | Enable/Disable host network for the pods                                    | `false` (Disabled by default)                           |
+| `hostNetwork`                           | Enable/Disable host network for the pods                                    | `false` (Disabled by default)                           |
+| `podDnsPolicy`                          | Optional pod [DNS policy](https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/#pods-dns-policy) |                 |
+| `podDnsConfig`                          | Optional pod [DNS configurations](https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/#pods-dns-config) |         |
