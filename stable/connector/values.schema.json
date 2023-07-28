@@ -102,6 +102,7 @@
                 "logLevel": {
                     "type": "string",
                     "default": "",
+                    "enum": ["error", "warning", "info", "debug"],
                     "title": "The logLevel Schema",
                     "examples": [
                         "error"
