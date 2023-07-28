@@ -31,8 +31,10 @@
                     "type": "string",
                     "default": "",
                     "title": "The pullPolicy Schema",
-                    "examples": [
-                        "Always"
+                    "enum": [
+                        "Always",
+                        "IfNotPresent",
+                        "Never"
                     ]
                 }
             },
