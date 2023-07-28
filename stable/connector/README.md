@@ -79,8 +79,8 @@ The following table lists the configurable parameters of the Twingate chart and 
 | `affinity`                              | Map of node/pod affinities                                                  | `{}` (The value is evaluated as a template)             |
 | `nodeSelector`                          | node labels for pod assignment                                              | `{}` (The value is evaluated as a template)             |
 | `tolerations`                           | Tolerations for pod assignment                                              | `[]` (The value is evaluated as a template)             |
-| `resources`                             | Resrouce limitations                                                        | `{}` (The value is evaluated as a template)             |
+| `resources`                             | Resource requests and limits                                                | `{}` (The value is evaluated as a template)             |
 | `additionalLabels`                      | Additional labels for the deployment                                        | `{}` (The value is evaluated as a template)             |
 | `podAnnotations`                        | Map of annotations to add to pods                                           | `{}`                                                    |
 | `env`                                   | Additional environment variables for the deployment                         | `{}` (The value is evaluated as a template)             |
-| `hostNetwork`                           | Enable/Disable host network for the pods                                    | `false` (Disabled by default)                           |
+| `hostNetwork`                           | Enable/Disable host network for the pod                                     | `false` (Disabled by default)                           |
