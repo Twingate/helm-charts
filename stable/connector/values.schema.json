@@ -1,22 +1,6 @@
 {
     "$schema": "https://json-schema.org/draft/2019-09/schema",
-    "$id": "http://example.com/example.json",
-    "type": "object",
-    "default": {},
-    "title": "Root Schema",
-    "required": [
-        "image",
-        "hostNetwork",
-        "resources",
-        "additionalLabels",
-        "podAnnotations",
-        "nodeSelector",
-        "tolerations",
-        "affinity",
-        "env",
-        "icmpSupport",
-        "connector"
-    ],
+    "title": "Twingate Connector Chart Schema",
     "properties": {
         "image": {
             "type": "object",
@@ -33,10 +17,14 @@
                 },
                 "tag": {
                     "type": "integer",
+                    "oneOf": [
+                        {"type": "integer"},
+                        {"type": "string"}
+                    ],
                     "default": 0,
                     "title": "The tag Schema",
                     "examples": [
-                        1
+                        1, "latest"
                     ]
                 },
                 "pullPolicy": {
@@ -57,18 +45,7 @@
         "hostNetwork": {
             "type": "boolean",
             "default": false,
-            "title": "Enable hostnetwork on pod",
-            "examples": [
-                false
-            ]
-        },
-        "env": {
-            "type": "object",
-            "default": {},
-            "title": "The env Schema",
-            "required": [],
-            "properties": {},
-            "examples": [{}]
+            "title": "Enable hostnetwork on pod"
         },
         "icmpSupport": {
             "type": "object",
@@ -95,99 +72,55 @@
             "type": "object",
             "default": {},
             "title": "The connector Schema",
-            "required": [
-                "network"
+            "oneOf": [
+                {"required": ["network", "accessToken", "refreshToken"]},
+                {"required": ["network", "existingSecret"]}
             ],
             "properties": {
                 "logLevel": {
                     "type": "string",
-                    "default": "",
+                    "default": "error",
                     "enum": ["error", "warning", "info", "debug"],
-                    "title": "The logLevel Schema",
-                    "examples": [
-                        "error"
-                    ]
+                    "title": "The logLevel Schema"
                 },
                 "logAnalytics": {
                     "type": "string",
                     "default": "",
                     "enum": ["v1", "v2"],
-                    "title": "The logAnalytics Schema",
-                    "examples": [
-                        "v2"
-                    ]
+                    "title": "The logAnalytics Schema"
                 },
                 "network": {
                     "type": "string",
                     "default": null,
-                    "title": "The network Schema",
-                    "examples": [
-                        null
-                    ]
-                },
-                "url": {
-                    "type": "string",
-                    "default": "",
-                    "title": "The url Schema",
-                    "examples": [
-                        "twingate.com"
-                    ]
+                    "title": "The network Schema"
                 },
                 "accessToken": {
                     "type": "string",
                     "default": null,
-                    "title": "The accessToken Schema",
-                    "examples": [
-                        null
-                    ]
+                    "title": "The accessToken Schema"
                 },
                 "refreshToken": {
                     "type": "string",
                     "default": null,
-                    "title": "The refreshToken Schema",
-                    "examples": [
-                        null
-                    ]
+                    "title": "The refreshToken Schema"
                 },
                 "existingSecret": {
                     "type": "string",
                     "default": null,
-                    "title": "The existingSecret Schema",
-                    "examples": [
-                        null
-                    ]
+                    "title": "The existingSecret Schema"
                 },
                 "dnsServer": {
                     "type": "string",
                     "default": null,
-                    "title": "The dnsServer Schema",
-                    "examples": [
-                        null
-                    ]
+                    "title": "The dnsServer Schema"
                 }
             },
-            "oneOf": [
-                {
-                    "required": [
-                        "accessToken",
-                        "refreshToken"
-                    ]
-                },
-                {
-                    "required": [
-                        "existingSecret"
-                    ]
-                }
-            ],
             "examples": [{
                 "logLevel": "error",
                 "logAnalytics": "v2",
-                "network": null,
-                "url": "twingate.com",
-                "accessToken": null,
-                "refreshToken": null,
-                "existingSecret": null,
-                "dnsServer": null
+                "network": "foo",
+                "accessToken": "access token value",
+                "refreshToken": "refresh token value"
             }]
         }
     },
