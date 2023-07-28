@@ -66,6 +66,7 @@ The following table lists the configurable parameters of the Twingate chart and 
 | `connector.refreshToken`                | Refresh Token (required unless `connector.existingSecret` is specified)     |                                                         |
 | `connector.existingSecret`              | The name of an existing secret to use for the access and refresh tokens     |                                                         |
 | `connector.logLevel`                    | Log Level - supported : [error, warning, info, debug]                       | `error`                                                 |
+| `connector.logAnalytics`                | Real0time connection logs (see https://www.twingate.com/docs/connector-real-time-logs) - supported : [v2]                                |                                                         |
 | `connector.dnsServer`                   | Custom DNS server                                                           |                                                         |
 | `image.registry`                        | Twingate image registry                                                     | `docker.io`                                             |
 | `image.repository`                      | Twingate image name                                                         | `twingate/connector`                                    |
@@ -82,4 +83,5 @@ The following table lists the configurable parameters of the Twingate chart and 
 | `additionalLabels`                      | Additional labels for the deployment                                        | `{}` (The value is evaluated as a template)             |
 | `podAnnotations`                        | Map of annotations to add to pods                                           | `{}`                                                    |
 | `env`                                   | Additional environment variables for the deployment                         | `{}` (The value is evaluated as a template)             |
-| `hostNetwork`                           | Enable/Disable host network for the pods                                    | `false` (Disabled by default)  |
+| `hostNetwork`                           | Enable/Disable host network for the pods                                    | `false` (Disabled by default)                           |
+| `hostNetwork`                           | Enable/Disable host network for the pods                                    | `false` (Disabled by default)                           |

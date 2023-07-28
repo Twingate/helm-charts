@@ -64,10 +64,14 @@ spec:
               {{- else }}
               value: "3"
               {{- end }}
-              {{- range $key, $value := .Values.env }}
+            {{- if .Values.connector.logAnalytics}}
+            - name: TWINGATE_LOG_ANALYTICS
+              value: {{ .Values.connector.logAnalytics }}
+            {{- end }}
+            {{- range $key, $value := .Values.env }}
             - name: {{ $key }}
               value: {{ $value | quote }}
-              {{- end }}
+            {{- end }}
           securityContext:
             allowPrivilegeEscalation: false
           resources:
