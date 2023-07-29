@@ -152,7 +152,6 @@
             "logLevel": "error",
             "logAnalytics": "v2",
             "network": null,
-            "url": "twingate.com",
             "accessToken": null,
             "refreshToken": null,
             "existingSecret": null,

@@ -49,7 +49,7 @@ spec:
                 optional: false
           env:
             - name: TWINGATE_URL
-              value: "https://{{ required "Network name required" .Values.connector.network }}.{{ .Values.connector.url }}"
+              value: "https://{{ required "Network name required" .Values.connector.network }}.{{ .Values.connector.url | default "twingate.com" }}"
               {{- if .Values.connector.dnsServer }}
             - name: TWINGATE_DNS
               value: "{{ .Values.connector.dnsServer }}"

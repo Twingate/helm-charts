@@ -66,7 +66,6 @@ icmpSupport:
 connector: {}
 #   logLevel: "error"
 #   network: "<network slug>"
-#   url: "twingate.com"
 #   accessToken: "<access token>"
 #   refreshToken: "<refresh token>"
 #   existingSecret: "secret name"
