@@ -54,10 +54,12 @@ affinity: {}
 ##
 env: {}
 
-## Enable the Linux kernel's net.ipv4.ping_group_range parameter to allow ping connector.
+## Enable the Linux kernel's net.ipv4.ping_group_range parameter to allow ping a resource.
 ## Use only if you enable this sysctls in your cluster (disabled by default)
 ## Or have Kubernetes master higher than 1.18
 ## (https://kubernetes.io/docs/tasks/administer-cluster/sysctl-cluster/#enabling-unsafe-sysctls)
+## See also: https://help.twingate.com/hc/en-us/articles/9131363309469-Unable-to-ping-a-resource-protected-by-twingate-even-though-it-can-be-reached-on-other-ports-
+##
 icmpSupport:
   enabled: false
 
