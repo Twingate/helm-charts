@@ -24,7 +24,6 @@ icmpSupport:
   enabled: false
 
 connector:
-  logLevel: "error"
   network: "test-tenant"
   accessToken: "ACCESS_TOKEN"
   refreshToken: "REFRESH_TOKEN"
