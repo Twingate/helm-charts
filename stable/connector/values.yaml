@@ -26,7 +26,7 @@ resources:
 ##
 additionalLabels: {}
 
-## podAnnotations Extra annotations for Kafka pods
+## podAnnotations Extra annotations for Connector pod
 ## ref: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/
 ##
 podAnnotations: {}
