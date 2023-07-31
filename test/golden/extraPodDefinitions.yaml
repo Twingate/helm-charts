@@ -1,0 +1,19 @@
+env: {}
+
+connector:
+  network: "test-tenant"
+  url: "twingate.com"
+  accessToken: "ACCESS_TOKEN"
+  refreshToken: "REFRESH_TOKEN"
+
+podDnsPolicy: "None"
+podDnsConfig:
+  nameservers:
+    - 192.0.2.1
+  searches:
+    - ns1.svc.cluster-domain.example
+    - my.dns.search.suffix
+  options:
+    - name: ndots
+      value: "2"
+    - name: edns0
