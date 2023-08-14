@@ -151,11 +151,9 @@
         "connector": {
             "logLevel": "error",
             "logAnalytics": "v2",
-            "network": null,
-            "accessToken": null,
-            "refreshToken": null,
-            "existingSecret": null,
-            "dnsServer": null
+            "network": "acme",
+            "accessToken": "access token value",
+            "refreshToken": "refresh token value",
         }
     }]
 }
