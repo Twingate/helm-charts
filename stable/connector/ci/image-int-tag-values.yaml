@@ -1,0 +1,9 @@
+image:
+  repository: twingate/connector
+  tag: 1
+  pullPolicy: Always
+
+connector:
+  network: "acme"
+  accessToken: "access token"
+  refreshToken: "refresh token"

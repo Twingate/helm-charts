@@ -24,6 +24,8 @@ icmpSupport:
   enabled: false
 
 connector:
+  logLevel: "error"
   network: "test-tenant"
+  url: "another-twingate.com"
   accessToken: "ACCESS_TOKEN"
   refreshToken: "REFRESH_TOKEN"

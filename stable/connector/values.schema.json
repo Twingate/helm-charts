@@ -1,0 +1,159 @@
+{
+    "$schema": "https://json-schema.org/draft/2019-09/schema",
+    "title": "Twingate Connector Chart Schema",
+    "properties": {
+        "image": {
+            "type": "object",
+            "default": {},
+            "title": "The image Schema",
+            "properties": {
+                "repository": {
+                    "type": "string",
+                    "default": "",
+                    "title": "The repository Schema",
+                    "examples": [
+                        "twingate/connector"
+                    ]
+                },
+                "tag": {
+                    "type": "integer",
+                    "oneOf": [
+                        {"type": "integer"},
+                        {"type": "string"}
+                    ],
+                    "default": 0,
+                    "title": "The tag Schema",
+                    "examples": [
+                        1, "latest"
+                    ]
+                },
+                "pullPolicy": {
+                    "type": "string",
+                    "default": "",
+                    "title": "The pullPolicy Schema",
+                    "enum": [
+                        "Always",
+                        "IfNotPresent",
+                        "Never"
+                    ]
+                }
+            },
+            "examples": [{
+                "repository": "twingate/connector",
+                "tag": 1,
+                "pullPolicy": "Always"
+            }]
+        },
+        "hostNetwork": {
+            "type": "boolean",
+            "default": false,
+            "title": "Enable hostnetwork on pod"
+        },
+        "icmpSupport": {
+            "type": "object",
+            "default": {},
+            "title": "The icmpSupport Schema",
+            "required": [
+                "enabled"
+            ],
+            "properties": {
+                "enabled": {
+                    "type": "boolean",
+                    "default": false,
+                    "title": "The enabled Schema",
+                    "examples": [
+                        false
+                    ]
+                }
+            },
+            "examples": [{
+                "enabled": false
+            }]
+        },
+        "connector": {
+            "type": "object",
+            "default": {},
+            "title": "The connector Schema",
+            "oneOf": [
+                {"required": ["network", "accessToken", "refreshToken"]},
+                {"required": ["network", "existingSecret"]}
+            ],
+            "properties": {
+                "logLevel": {
+                    "type": "string",
+                    "default": "error",
+                    "enum": ["error", "warning", "info", "debug"],
+                    "title": "The logLevel Schema"
+                },
+                "logAnalytics": {
+                    "type": "string",
+                    "default": "",
+                    "enum": ["v1", "v2"],
+                    "title": "The logAnalytics Schema"
+                },
+                "network": {
+                    "type": "string",
+                    "default": null,
+                    "title": "The network Schema"
+                },
+                "accessToken": {
+                    "type": "string",
+                    "default": null,
+                    "title": "The accessToken Schema"
+                },
+                "refreshToken": {
+                    "type": "string",
+                    "default": null,
+                    "title": "The refreshToken Schema"
+                },
+                "existingSecret": {
+                    "type": "string",
+                    "default": null,
+                    "title": "The existingSecret Schema"
+                },
+                "dnsServer": {
+                    "type": "string",
+                    "default": null,
+                    "title": "The dnsServer Schema"
+                }
+            },
+            "examples": [{
+                "logLevel": "error",
+                "logAnalytics": "v2",
+                "network": "foo",
+                "accessToken": "access token value",
+                "refreshToken": "refresh token value"
+            }]
+        }
+    },
+    "examples": [{
+        "image": {
+            "repository": "twingate/connector",
+            "tag": 1,
+            "pullPolicy": "Always"
+        },
+        "hostNetwork": false,
+        "resources": {
+            "requests": {
+                "cpu": "50m",
+                "memory": "200Mi"
+            }
+        },
+        "additionalLabels": {},
+        "podAnnotations": {},
+        "nodeSelector": {},
+        "tolerations": [],
+        "affinity": {},
+        "env": {},
+        "icmpSupport": {
+            "enabled": false
+        },
+        "connector": {
+            "logLevel": "error",
+            "logAnalytics": "v2",
+            "network": "acme",
+            "accessToken": "access token value",
+            "refreshToken": "refresh token value"
+        }
+    }]
+}

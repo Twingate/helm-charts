@@ -1,6 +1,5 @@
 connector:
   logLevel: "info"
   network: "test-tenant"
-  url: "twingate.com"
   accessToken: "ACCESS_TOKEN"
   refreshToken: "REFRESH_TOKEN"
