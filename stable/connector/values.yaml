@@ -2,26 +2,49 @@
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 
+## Twingate Connector image version
+## ref: https://hub.docker.com/r/twingate/connector/tags
+##
 image:
   repository: twingate/connector
   tag: 1
   pullPolicy: Always
 
+## Enable/Disable host network for the pod
+##
 hostNetwork: false  # To enable hostnetwork for pod
 
+## Resource requests and limits
+## ref: https://kubernetes.io/docs/user-guide/compute-resources/
+##
 resources:
   requests:
     cpu: 50m
     memory: 200Mi
 
+## Additional labels to add to the Deployment's metadata
+##
 additionalLabels: {}
 
+## podAnnotations Extra annotations for Connector pod
+## ref: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/
+##
 podAnnotations: {}
 
+## nodeSelector Node labels for pod assignment
+## Ref: https://kubernetes.io/docs/user-guide/node-selection/
+##
 nodeSelector: {}
 
+## tolerations Tolerations for pod assignment
+## Ref: https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/
+##
 tolerations: []
 
+## affinity for pod assignment
+## Ref: https://kubernetes.io/docs/concepts/configuration/assign-pod-node/#affinity-and-anti-affinity
+## Note: podAffinityPreset, podAntiAffinityPreset, and  nodeAffinityPreset will be ignored when it's set
+##
 affinity: {}
 
 ## Extra environment variables that will be pass onto connector pod
@@ -29,21 +52,23 @@ affinity: {}
 ## env:
 ##   FOO: bar
 ##
-
 env: {}
 
-# Enable the Linux kernel's net.ipv4.ping_group_range parameter to allow ping connector.
-# Use only if you enable this sysctls in your cluster (disabled by default)
-# Or have Kubernetes master higher than 1.18
-# (https://kubernetes.io/docs/tasks/administer-cluster/sysctl-cluster/#enabling-unsafe-sysctls)
+## Enable the Linux kernel's net.ipv4.ping_group_range parameter to allow ping a resource.
+## Use only if you enable this sysctls in your cluster (disabled by default)
+## Or have Kubernetes master higher than 1.18
+## (https://kubernetes.io/docs/tasks/administer-cluster/sysctl-cluster/#enabling-unsafe-sysctls)
+## See also: https://help.twingate.com/hc/en-us/articles/9131363309469-Unable-to-ping-a-resource-protected-by-twingate-even-though-it-can-be-reached-on-other-ports-
+##
 icmpSupport:
   enabled: false
 
-connector:
-  logLevel: "error"
-  network:
-  url: "twingate.com"
-  accessToken:
-  refreshToken:
-  existingSecret:
-  dnsServer:
+## Connector Arguments
+##
+connector: {}
+#   logLevel: "error"
+#   network: "<network slug>"
+#   accessToken: "<access token>"
+#   refreshToken: "<refresh token>"
+#   existingSecret: "secret name"
+#   dnsServer: "some.dnsserver.com"

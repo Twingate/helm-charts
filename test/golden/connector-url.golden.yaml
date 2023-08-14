@@ -1,0 +1,57 @@
+---
+# Source: connector/templates/secret.yaml
+apiVersion: v1
+kind: Secret
+metadata:
+  name: test-connector
+  labels:
+    app.kubernetes.io/name: connector
+    app.kubernetes.io/instance: test
+    app.kubernetes.io/version: "latest"
+    app.kubernetes.io/managed-by: Helm
+type: Opaque
+data:
+  TWINGATE_ACCESS_TOKEN: "QUNDRVNTX1RPS0VO"
+  TWINGATE_REFRESH_TOKEN: "UkVGUkVTSF9UT0tFTg=="
+---
+# Source: connector/templates/deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: test-connector
+  labels:
+    app.kubernetes.io/name: connector
+    app.kubernetes.io/instance: test
+    app.kubernetes.io/version: "latest"
+    app.kubernetes.io/managed-by: Helm
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: connector
+      app.kubernetes.io/instance: test
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: connector
+        app.kubernetes.io/instance: test
+    spec:
+      containers:
+        - name: connector
+          image: "twingate/connector:1"
+          imagePullPolicy: Always
+          envFrom:
+            - secretRef:
+                name: test-connector
+                optional: false
+          env:
+            - name: TWINGATE_URL
+              value: "https://test-tenant.another-twingate.com"
+            - name: TWINGATE_LOG_LEVEL
+              value: "3"
+          securityContext:
+            allowPrivilegeEscalation: false
+          resources:
+            requests:
+              cpu: 50m
+              memory: 200Mi
