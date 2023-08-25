@@ -16,7 +16,6 @@
                     ]
                 },
                 "tag": {
-                    "type": "integer",
                     "oneOf": [
                         {"type": "integer"},
                         {"type": "string"}
