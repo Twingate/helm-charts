@@ -48,7 +48,7 @@ spec:
                 {{- end }}
                 optional: false
           env:
-            - name: TWINGATE_LABEL_DEPLOYEDBY
+            - name: TWINGATE_LABEL_DEPLOYED_BY
               value: helm
             - name: TWINGATE_LABEL_HELM_CHART
               value: {{ .Chart.Name }}-{{ .Chart.Version }}

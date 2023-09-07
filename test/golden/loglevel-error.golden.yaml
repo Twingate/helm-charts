@@ -45,7 +45,7 @@ spec:
                 name: test-connector
                 optional: false
           env:
-            - name: TWINGATE_LABEL_DEPLOYEDBY
+            - name: TWINGATE_LABEL_DEPLOYED_BY
               value: helm
             - name: TWINGATE_LABEL_HELM_CHART
               value: connector-0.1.21
