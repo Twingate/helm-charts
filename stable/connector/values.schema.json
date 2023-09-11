@@ -107,12 +107,14 @@
                 },
                 "existingSecret": {
                     "type": "string",
+                    "minLength": 1,
                     "default": null,
                     "title": "The existingSecret Schema"
                 },
                 "dnsServer": {
                     "type": "string",
                     "default": null,
+                    "minLength": 3,
                     "title": "The dnsServer Schema"
                 }
             },
