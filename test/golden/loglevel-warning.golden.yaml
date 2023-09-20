@@ -48,7 +48,7 @@ spec:
             - name: TWINGATE_LABEL_DEPLOYED_BY
               value: helm
             - name: TWINGATE_LABEL_HELM_CHART
-              value: connector-0.0.0-test
+              value: connector-0.1.22
             - name: TWINGATE_URL
               value: "https://test-tenant.twingate.com"
             - name: TWINGATE_LOG_LEVEL
