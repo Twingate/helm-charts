@@ -28,7 +28,11 @@ If release name contains chart name it will be used as a full name.
 Create chart name and version as used by the chart label.
 */}}
 {{- define "cn.chart" -}}
+{{- if .Values.versionOverrideForTests -}}
+{{- printf "%s-%s" .Chart.Name .Values.versionOverrideForTests | replace "+" "_" | trunc 63 | trimSuffix "-" -}}
+{{- else -}}
 {{- printf "%s-%s" .Chart.Name .Chart.Version | replace "+" "_" | trunc 63 | trimSuffix "-" -}}
+{{- end -}}
 {{- end -}}
 
 {{/*
