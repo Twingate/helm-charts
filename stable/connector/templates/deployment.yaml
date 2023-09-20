@@ -51,7 +51,7 @@ spec:
             - name: TWINGATE_LABEL_DEPLOYED_BY
               value: helm
             - name: TWINGATE_LABEL_HELM_CHART
-              value: {{ .Chart.Name }}-{{ .Chart.Version }}
+              value: {{ include "cn.chart" . }}
             - name: TWINGATE_URL
               value: "https://{{ required "Network name required" .Values.connector.network }}.{{ .Values.connector.url | default "twingate.com" }}"
               {{- if .Values.connector.dnsServer }}
