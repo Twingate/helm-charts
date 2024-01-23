@@ -59,6 +59,10 @@ spec:
               value: "bar"
           securityContext:
             allowPrivilegeEscalation: false
+            capabilities:
+              drop: ["ALL"]
+            runAsNonRoot: true
+            runAsUser: 65532
           resources:
             requests:
               cpu: 50m
