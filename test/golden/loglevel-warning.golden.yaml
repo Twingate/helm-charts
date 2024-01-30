@@ -57,6 +57,10 @@ spec:
               value: "4"
           securityContext:
             allowPrivilegeEscalation: false
+            capabilities:
+              drop: ["ALL"]
+            runAsNonRoot: true
+            runAsUser: 65532
           resources:
             requests:
               cpu: 50m
