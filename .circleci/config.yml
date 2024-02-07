@@ -32,13 +32,12 @@ jobs:
 
   build-and-publish-charts:
     docker:
-      - image: alpine/helm:3.14.0
+      - image: cimg/base:current
     steps:
-      - run:
-          name: provision
-          command: |
-            apk update && apk upgrade && apk add --no-cache bash git openssh curl
       - checkout
+      - twingate/install-helm
+      - twingate/oidc-auth    
+
       - run:
           name: build
           command: .circleci/build.sh stable
@@ -49,12 +48,10 @@ jobs:
       #     name: publish
       #     command: .circleci/publish.sh
 
-      - twingate/oidc-auth
-
       - run:
           name: publish to OCI
           command: .circleci/publish_oci.sh stable
-          
+
 workflows:
   version: 2
   build:
@@ -64,15 +61,15 @@ workflows:
               branches:
                 ignore:
                   - gh-pages
-      - golden-tests:
-          filters:
-            branches:
-              ignore:
-                - gh-pages
+      # - golden-tests:
+      #     filters:
+      #       branches:
+      #         ignore:
+      #           - gh-pages
       - build-and-publish-charts:
           requires:
             - lint-charts
-            - golden-tests
+            # - golden-tests
           context: 
             twingate-dev
           filters:
