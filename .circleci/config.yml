@@ -1,7 +1,9 @@
 version: 2.1
 orbs:
-  go: circleci/go@1.7.3
-  helm: circleci/helm@2.0.1
+  go: circleci/go@1.11.0
+  helm: circleci/helm@3.0.1
+  twingate: twingate/shared@0.0
+
 jobs:
   lint-charts:
     docker:
@@ -19,7 +21,7 @@ jobs:
       tag: '1.20'
     steps:
       - checkout
-      - helm/install-helm-client
+      - helm/install_helm_client
       - go/load-cache
       - go/mod-download
       - go/save-cache
@@ -30,7 +32,7 @@ jobs:
 
   build-and-publish-charts:
     docker:
-      - image: alpine/helm:3.11.2
+      - image: alpine/helm:3.14.0
     steps:
       - run:
           name: provision
@@ -43,10 +45,16 @@ jobs:
       - add_ssh_keys:
           fingerprints:
             - a1:6e:2f:67:a6:f3:eb:4b:5c:5f:ce:fd:25:74:ac:c1
-      - run:
-          name: publish
-          command: .circleci/publish.sh
+      # - run:
+      #     name: publish
+      #     command: .circleci/publish.sh
 
+      - twingate/oidc-auth
+
+      - run:
+          name: publish to OCI
+          command: .circleci/publish_oci.sh stable
+          
 workflows:
   version: 2
   build:
@@ -65,7 +73,9 @@ workflows:
           requires:
             - lint-charts
             - golden-tests
+          context: 
+            twingate-dev
           filters:
             branches:
               only:
-                - master
+                - feature/DEV-1488-push-helm-chart-to-oci-repo
