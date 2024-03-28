@@ -75,7 +75,9 @@
             "title": "The connector Schema",
             "oneOf": [
                 {"required": ["network", "accessToken", "refreshToken"]},
-                {"required": ["network", "existingSecret"]}
+                {"required": ["network", "existingSecret"]},
+                {"required": ["url", "accessToken", "refreshToken"]},
+                {"required": ["url", "existingSecret"]}
             ],
             "properties": {
                 "logLevel": {
