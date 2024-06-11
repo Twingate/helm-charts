@@ -47,6 +47,8 @@ tolerations: []
 ##
 affinity: {}
 
+priorityClassName: ""
+
 ## Extra environment variables that will be pass onto connector pod
 ##
 ## env:
