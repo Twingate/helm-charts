@@ -58,31 +58,32 @@ The command removes all the Kubernetes components associated with the chart and 
 
 The following table lists the configurable parameters of the Twingate chart and their default values.
 
-| Parameter                               | Description                                                                 | Default                                                 |
-|-----------------------------------------|-----------------------------------------------------------------------------|---------------------------------------------------------|
-| `connector.network`                     | The Twingate network name, eg. acme (required)                              |                                                         |
-| `connector.url`                         | The Twingate service domain                                                 | `twingate.com`                                          |
-| `connector.accessToken`                 | Access Token (required unless `connector.existingSecret` is specified)      |                                                         |
-| `connector.refreshToken`                | Refresh Token (required unless `connector.existingSecret` is specified)     |                                                         |
-| `connector.existingSecret`              | The name of an existing secret to use for the access and refresh tokens     |                                                         |
-| `connector.logLevel`                    | Log Level - supported : [error, warning, info, debug]                       | `error`                                                 |
-| `connector.logAnalytics`                | Real-time connection logs (see https://www.twingate.com/docs/connector-real-time-logs) - supported : [v1, v2]                                |                                                         |
-| `connector.dnsServer`                   | Custom DNS server                                                           |                                                         |
-| `image.registry`                        | Twingate image registry                                                     | `docker.io`                                             |
-| `image.repository`                      | Twingate image name                                                         | `twingate/connector`                                    |
-| `image.tag`                             | Twingate image tag                                                          | `latest`                                                |
-| `image.pullPolicy`                      | Twingate image pull policy                                                  | `Always`                                                |
-| `image.pullSecrets`                     | Specify docker-registry secret names as an array                            | `[]` (does not add image pull secrets to deployed pods) |
-| `nameOverride`                          | String to partially override twingate.fullname template                     | `nil`                                                   |
-| `fullnameOverride`                      | String to fully override twingate.fullname template                         | `nil`                                                   |
-| `icmpSupport.enabled`                   | Enable the ICMP securityContext. See more in values file                    | `false`                                                 |
-| `affinity`                              | Map of node/pod affinities                                                  | `{}` (The value is evaluated as a template)             |
-| `nodeSelector`                          | node labels for pod assignment                                              | `{}` (The value is evaluated as a template)             |
-| `tolerations`                           | Tolerations for pod assignment                                              | `[]` (The value is evaluated as a template)             |
-| `resources`                             | Resource requests and limits                                                | `{}` (The value is evaluated as a template)             |
-| `additionalLabels`                      | Additional labels for the deployment                                        | `{}` (The value is evaluated as a template)             |
-| `podAnnotations`                        | Map of annotations to add to pods                                           | `{}`                                                    |
-| `podDnsPolicy`                          | Optional pod [DNS policy](https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/#pods-dns-policy) |                 |
-| `podDnsConfig`                          | Optional pod [DNS configurations](https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/#pods-dns-config) |         |
-| `env`                                   | Additional environment variables for the deployment                         | `{}` (The value is evaluated as a template)             |
-| `hostNetwork`                           | Enable/Disable host network for the pod                                     | `false` (Disabled by default)                           |
+| Parameter                               | Description                                                                                                                 | Default                                                 |
+|-----------------------------------------|-----------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------|
+| `connector.network`                     | The Twingate network name, eg. acme (required)                                                                              |                                                         |
+| `connector.url`                         | The Twingate service domain                                                                                                 | `twingate.com`                                          |
+| `connector.accessToken`                 | Access Token (required unless `connector.existingSecret` is specified)                                                      |                                                         |
+| `connector.refreshToken`                | Refresh Token (required unless `connector.existingSecret` is specified)                                                     |                                                         |
+| `connector.existingSecret`              | The name of an existing secret to use for the access and refresh tokens                                                     |                                                         |
+| `connector.logLevel`                    | Log Level - supported : [error, warning, info, debug]                                                                       | `error`                                                 |
+| `connector.logAnalytics`                | Real-time connection logs (see https://www.twingate.com/docs/connector-real-time-logs) - supported : [v1, v2]               |                                                         |
+| `connector.dnsServer`                   | Custom DNS server                                                                                                           |                                                         |
+| `image.registry`                        | Twingate image registry                                                                                                     | `docker.io`                                             |
+| `image.repository`                      | Twingate image name                                                                                                         | `twingate/connector`                                    |
+| `image.tag`                             | Twingate image tag                                                                                                          | `latest`                                                |
+| `image.pullPolicy`                      | Twingate image pull policy                                                                                                  | `Always`                                                |
+| `image.pullSecrets`                     | Specify docker-registry secret names as an array                                                                            | `[]` (does not add image pull secrets to deployed pods) |
+| `nameOverride`                          | String to partially override twingate.fullname template                                                                     | `nil`                                                   |
+| `fullnameOverride`                      | String to fully override twingate.fullname template                                                                         | `nil`                                                   |
+| `icmpSupport.enabled`                   | Enable the ICMP securityContext. See more in values file                                                                    | `false`                                                 |
+| `affinity`                              | Map of node/pod affinities                                                                                                  | `{}` (The value is evaluated as a template)             |
+| `priorityClassName`                     | String to added priorityClass for pod assignment                                                                            | `nil`                                                   |
+| `nodeSelector`                          | node labels for pod assignment                                                                                              | `{}` (The value is evaluated as a template)             |
+| `tolerations`                           | Tolerations for pod assignment                                                                                              | `[]` (The value is evaluated as a template)             |
+| `resources`                             | Resource requests and limits                                                                                                | `{}` (The value is evaluated as a template)             |
+| `additionalLabels`                      | Additional labels for the deployment                                                                                        | `{}` (The value is evaluated as a template)             |
+| `podAnnotations`                        | Map of annotations to add to pods                                                                                           | `{}`                                                    |
+| `podDnsPolicy`                          | Optional pod [DNS policy](https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/#pods-dns-policy)         |                                                         |
+| `podDnsConfig`                          | Optional pod [DNS configurations](https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/#pods-dns-config) |                                                         |
+| `env`                                   | Additional environment variables for the deployment                                                                         | `{}` (The value is evaluated as a template)             |
+| `hostNetwork`                           | Enable/Disable host network for the pod                                                                                     | `false` (Disabled by default)                           |
