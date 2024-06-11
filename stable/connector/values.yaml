@@ -47,6 +47,10 @@ tolerations: []
 ##
 affinity: {}
 
+### priorityClassName for pod assignment
+### Ref: https://kubernetes.io/docs/concepts/configuration/pod-priority-preemption/
+### Note: priorityClassName will be ignored if it's set
+##
 priorityClassName: ""
 
 ## Extra environment variables that will be pass onto connector pod
