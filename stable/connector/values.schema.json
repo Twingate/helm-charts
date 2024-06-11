@@ -145,6 +145,7 @@
         "nodeSelector": {},
         "tolerations": [],
         "affinity": {},
+        "priorityClassName": "",
         "env": {},
         "icmpSupport": {
             "enabled": false
