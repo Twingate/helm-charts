@@ -1,0 +1,81 @@
+---
+# Source: connector/templates/secret.yaml
+apiVersion: v1
+kind: Secret
+metadata:
+  name: test-connector
+  labels:
+    app.kubernetes.io/name: connector
+    helm.sh/chart: connector-major.minor.patch-test
+    app.kubernetes.io/instance: test
+    app.kubernetes.io/version: "latest"
+    app.kubernetes.io/managed-by: Helm
+type: Opaque
+data:
+  TWINGATE_ACCESS_TOKEN: "QUNDRVNTX1RPS0VO"
+  TWINGATE_REFRESH_TOKEN: "UkVGUkVTSF9UT0tFTg=="
+---
+# Source: connector/templates/deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: test-connector
+  labels:
+    app.kubernetes.io/name: connector
+    helm.sh/chart: connector-major.minor.patch-test
+    app.kubernetes.io/instance: test
+    app.kubernetes.io/version: "latest"
+    app.kubernetes.io/managed-by: Helm
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: connector
+      app.kubernetes.io/instance: test
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: connector
+        app.kubernetes.io/instance: test
+    spec:
+      containers:
+        - name: connector
+          image: "twingate/connector:1"
+          imagePullPolicy: Always
+          readinessProbe:
+            exec:
+              command:
+              - /connectorctl
+              - health
+            initialDelaySeconds: 20
+            periodSeconds: 5
+          livenessProbe:
+            exec:
+              command:
+              - /connectorctl
+              - health
+            initialDelaySeconds: 5
+            periodSeconds: 5
+          envFrom:
+            - secretRef:
+                name: test-connector
+                optional: false
+          env:
+            - name: TWINGATE_LABEL_DEPLOYED_BY
+              value: helm
+            - name: TWINGATE_LABEL_HELM_CHART
+              value: connector-major.minor.patch-test
+            - name: TWINGATE_URL
+              value: "https://test-tenant.twingate.com"
+            - name: TWINGATE_LOG_LEVEL
+              value: "3"
+          securityContext:
+            allowPrivilegeEscalation: false
+            capabilities:
+              drop: ["ALL"]
+            runAsNonRoot: true
+            runAsUser: 65532
+          resources:
+            requests:
+              cpu: 50m
+              memory: 200Mi
