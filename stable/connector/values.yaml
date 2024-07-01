@@ -41,6 +41,11 @@ nodeSelector: {}
 ##
 tolerations: []
 
+## topologySpreadConstraints Topology spread constraints for pod
+## Ref: https://kubernetes.io/docs/concepts/scheduling-eviction/topology-spread-constraints/
+##
+topologySpreadConstraints: []
+
 ## affinity for pod assignment
 ## Ref: https://kubernetes.io/docs/concepts/configuration/assign-pod-node/#affinity-and-anti-affinity
 ## Note: podAffinityPreset, podAntiAffinityPreset, and  nodeAffinityPreset will be ignored when it's set

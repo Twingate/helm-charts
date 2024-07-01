@@ -1,0 +1,11 @@
+topologySpreadConstraints:
+  - labelSelector:
+      matchLabels:
+        app.kubernetes.io/name: connector
+    maxSkew: 1
+    topologyKey: kubernetes.io/hostname
+
+connector:
+  network: "test-tenant"
+  accessToken: "ACCESS_TOKEN"
+  refreshToken: "REFRESH_TOKEN"
