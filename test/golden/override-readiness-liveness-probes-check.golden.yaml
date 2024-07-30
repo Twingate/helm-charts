@@ -47,7 +47,7 @@ spec:
               command:
               - /connectorctl
               - health
-            initialDelaySeconds: null
+            initialDelaySeconds: 20
             periodSeconds: 5
           livenessProbe:
             exec:
@@ -79,4 +79,3 @@ spec:
             requests:
               cpu: 50m
               memory: 200Mi
-      priorityClassName: "system-cluster-critical"
