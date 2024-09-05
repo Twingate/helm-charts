@@ -4,4 +4,4 @@ home: https://www.twingate.com
 description: Twingate Connector helm chart
 icon: https://www.twingate.com/twingate.png
 name: connector
-version: 0.1.27
+version: 0.1.26
