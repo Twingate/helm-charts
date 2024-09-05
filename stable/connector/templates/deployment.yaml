@@ -35,6 +35,12 @@ spec:
     {{- if .Values.hostNetwork }}
       hostNetwork: true
     {{- end }}
+    {{- if .Values.image.imagePullSecrets}}
+      imagePullSecrets:
+      {{- range .Values.image.imagePullSecrets }}
+        - name: {{ . }}
+      {{- end }}
+    {{- end }}
       containers:
         - name: {{ .Chart.Name }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
