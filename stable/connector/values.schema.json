@@ -35,12 +35,22 @@
                         "IfNotPresent",
                         "Never"
                     ]
+                },
+                "imagePullSecrets": {
+                    "type": "array",
+                    "default": [],
+                    "title": "The imagePullSecrets Schema",
+                    "items": {
+                        "type": "string"
+                    }
                 }
             },
             "examples": [{
                 "repository": "twingate/connector",
                 "tag": 1,
-                "pullPolicy": "Always"
+                "pullPolicy": "Always",
+                "imagePullSecrets":
+                    ["dockerhub-secret"]
             }]
         },
         "hostNetwork": {
@@ -131,7 +141,9 @@
         "image": {
             "repository": "twingate/connector",
             "tag": 1,
-            "pullPolicy": "Always"
+            "pullPolicy": "Always",
+            "imagePullSecrets":
+                ["dockerhub-secret"]
         },
         "hostNetwork": false,
         "resources": {
