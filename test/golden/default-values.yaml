@@ -2,6 +2,7 @@ image:
   repository: twingate/connector
   tag: 1
   pullPolicy: Always
+  imagePullSecrets: []
 
 resources:
   requests:
