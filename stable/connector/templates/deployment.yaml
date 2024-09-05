@@ -26,6 +26,12 @@ spec:
         {{- toYaml . | nindent 8 }}
     {{- end }}
     spec:
+    {{- if .Values.image.imagePullSecrets}}
+      imagePullSecrets:
+      {{- range .Values.image.imagePullSecrets }}
+        - name: {{ . }}
+      {{- end }}
+    {{- end }}
     {{- if .Values.icmpSupport.enabled }}
       securityContext:
         sysctls:
@@ -35,7 +41,6 @@ spec:
     {{- if .Values.hostNetwork }}
       hostNetwork: true
     {{- end }}
-    {{- include "cn.imagePullSecrets" . | indent 6 }}
       containers:
         - name: {{ .Chart.Name }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"

@@ -23,20 +23,7 @@ If release name contains chart name it will be used as a full name.
 {{- end -}}
 {{- end -}}
 {{- end -}}
-{{/*
-Add the imagePullSecrets to the pod
-*/}}
-{{- define "cn.imagePullSecrets" -}}
-{{- if .Values.image.imagePullSecrets}}
-imagePullSecrets:
-{{- range .Values.image.imagePullSecrets }}
-  - name: {{ . }}
-{{- end }}
-{{- end -}}
-{{- end -}}
-{{/*
-Create chart name and version as used by the chart label.
-*/}}
+
 {{- define "cn.chart" -}}
 {{- printf "%s-%s" .Chart.Name .Chart.Version | replace "+" "_" | trunc 63 | trimSuffix "-" -}}
 {{- end -}}
