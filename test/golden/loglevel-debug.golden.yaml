@@ -58,7 +58,8 @@ spec:
           securityContext:
             allowPrivilegeEscalation: false
             capabilities:
-              drop: ["ALL"]
+              drop:
+              - ALL
             runAsNonRoot: true
             runAsUser: 65532
           resources:

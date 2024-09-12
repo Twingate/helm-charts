@@ -54,12 +54,13 @@ spec:
             - name: TWINGATE_URL
               value: "https://test-tenant.twingate.com"
             - name: TWINGATE_LOG_LEVEL
-              value: "4"
+              value: "3"
           securityContext:
             allowPrivilegeEscalation: false
             capabilities:
               drop:
               - ALL
+            readOnlyRootFilesystem: true
             runAsNonRoot: true
             runAsUser: 65532
           resources:
