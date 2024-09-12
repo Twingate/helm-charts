@@ -75,6 +75,25 @@ env: {}
 icmpSupport:
   enabled: false
 
+## Security context for the Connector container
+## https://kubernetes.io/docs/tasks/configure-pod-container/security-context/#set-the-security-context-for-a-container
+##
+securityContext:
+  allowPrivilegeEscalation: false
+  capabilities:
+    drop: ["ALL"]
+  runAsNonRoot: true
+  runAsUser: 65532
+  # readOnlyRootFilesystem: true
+
+## Security context for the Connector pod
+## https://kubernetes.io/docs/tasks/configure-pod-container/security-context/#set-the-security-context-for-a-pod
+##
+podSecurityContext: {}
+  # seccompProfile:
+  #   type: RuntimeDefault
+
+
 ## Connector Arguments
 ##
 connector: {}
