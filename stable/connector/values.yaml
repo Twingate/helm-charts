@@ -9,6 +9,7 @@ image:
   repository: twingate/connector
   tag: 1
   pullPolicy: Always
+  imagePullSecrets: []
 
 ## Enable/Disable host network for the pod
 ##
@@ -40,6 +41,11 @@ nodeSelector: {}
 ## Ref: https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/
 ##
 tolerations: []
+
+## topologySpreadConstraints Topology spread constraints for pod
+## Ref: https://kubernetes.io/docs/concepts/scheduling-eviction/topology-spread-constraints/
+##
+topologySpreadConstraints: []
 
 ## affinity for pod assignment
 ## Ref: https://kubernetes.io/docs/concepts/configuration/assign-pod-node/#affinity-and-anti-affinity

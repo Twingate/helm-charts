@@ -35,6 +35,12 @@ spec:
     {{- if .Values.hostNetwork }}
       hostNetwork: true
     {{- end }}
+    {{- if .Values.image.imagePullSecrets}}
+      imagePullSecrets:
+      {{- range .Values.image.imagePullSecrets }}
+        - name: {{ . }}
+      {{- end }}
+    {{- end }}
       containers:
         - name: {{ .Chart.Name }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
@@ -102,6 +108,10 @@ spec:
     {{- end }}
     {{- with .Values.tolerations }}
       tolerations:
+        {{- toYaml . | nindent 8 }}
+    {{- end }}
+    {{- with .Values.topologySpreadConstraints }}
+      topologySpreadConstraints:
         {{- toYaml . | nindent 8 }}
     {{- end }}
     {{- if .Values.priorityClassName }}
