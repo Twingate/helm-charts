@@ -1,0 +1,13 @@
+image:
+  repository: twingate/connector
+  tag: 1
+  pullPolicy: Always
+
+connector:
+  network: "test-tenant"
+  accessToken: "ACCESS_TOKEN"
+  refreshToken: "REFRESH_TOKEN"
+
+
+readinessProbe: false
+livenessProbe: false
