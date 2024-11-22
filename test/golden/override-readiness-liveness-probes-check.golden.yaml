@@ -38,8 +38,6 @@ spec:
         app.kubernetes.io/name: connector
         app.kubernetes.io/instance: test
     spec:
-      imagePullSecrets:
-        - name: docker-hub-registry
       containers:
         - name: connector
           image: "twingate/connector:1"
@@ -49,7 +47,7 @@ spec:
               command:
               - /connectorctl
               - health
-            initialDelaySeconds: null
+            initialDelaySeconds: 20
             periodSeconds: 5
           livenessProbe:
             exec:
