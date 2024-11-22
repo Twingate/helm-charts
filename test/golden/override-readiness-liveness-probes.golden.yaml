@@ -38,26 +38,10 @@ spec:
         app.kubernetes.io/name: connector
         app.kubernetes.io/instance: test
     spec:
-      imagePullSecrets:
-        - name: docker-hub-registry
       containers:
         - name: connector
           image: "twingate/connector:1"
           imagePullPolicy: Always
-          readinessProbe:
-            exec:
-              command:
-              - /connectorctl
-              - health
-            initialDelaySeconds: null
-            periodSeconds: 5
-          livenessProbe:
-            exec:
-              command:
-              - /connectorctl
-              - health
-            initialDelaySeconds: 5
-            periodSeconds: 5
           envFrom:
             - secretRef:
                 name: test-connector
