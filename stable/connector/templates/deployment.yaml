@@ -45,14 +45,6 @@ spec:
         - name: {{ .Chart.Name }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
-          {{- if .Values.readinessProbe }}
-          readinessProbe:
-{{ toYaml .Values.readinessProbe | indent 12 }}
-          {{- end }}
-          {{- if .Values.livenessProbe }}
-          livenessProbe:
-{{ toYaml .Values.livenessProbe | indent 12 }}
-          {{- end }}
           envFrom:
             - secretRef:
                 {{- if .Values.connector.existingSecret }}

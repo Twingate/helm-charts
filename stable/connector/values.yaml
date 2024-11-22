@@ -84,20 +84,3 @@ connector: {}
 #   refreshToken: "<refresh token>"
 #   existingSecret: "secret name"
 #   dnsServer: "some.dnsserver.com"
-
-readinessProbe:
-  exec:
-    command:
-    - /connectorctl
-    - health
-  initialDelaySeconds:
-  periodSeconds: 5
-
-
-livenessProbe:
-  exec:
-    command:
-    - /connectorctl
-    - health
-  initialDelaySeconds: 5
-  periodSeconds: 5
