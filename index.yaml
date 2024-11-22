@@ -3,9 +3,9 @@ entries:
   connector:
   - apiVersion: v1
     appVersion: latest
-    created: "2024-11-21T21:02:27.909235019Z"
+    created: "2024-11-22T04:24:53.356219242Z"
     description: Twingate Connector helm chart
-    digest: c83c331380ff0ffe1916a5dbd2a2972cc57afba16bfcb9ffeb724f8fe2c1bcfd
+    digest: 0c83c9aa445fe5745725c23bb10188b5da48055276667aa0793a48ca3d1604f5
     home: https://www.twingate.com
     icon: https://www.twingate.com/twingate.png
     name: connector
@@ -200,4 +200,4 @@ entries:
     urls:
     - https://twingate.github.io/helm-charts/packages/connector-0.1.9.tgz
     version: 0.1.9
-generated: "2024-11-21T21:02:27.907582087Z"
+generated: "2024-11-22T04:24:53.355560762Z"
