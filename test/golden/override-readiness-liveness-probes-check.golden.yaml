@@ -47,7 +47,7 @@ spec:
               command:
               - /connectorctl
               - health
-            initialDelaySeconds: null
+            initialDelaySeconds: 20
             periodSeconds: 5
           livenessProbe:
             exec:
@@ -72,14 +72,10 @@ spec:
           securityContext:
             allowPrivilegeEscalation: false
             capabilities:
-              drop:
-              - ALL
+              drop: ["ALL"]
             runAsNonRoot: true
             runAsUser: 65532
           resources:
             requests:
               cpu: 50m
               memory: 200Mi
-      tolerations:
-        - effect: NoSchedule
-          operator: Exists
