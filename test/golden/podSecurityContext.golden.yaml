@@ -38,6 +38,9 @@ spec:
         app.kubernetes.io/name: connector
         app.kubernetes.io/instance: test
     spec:
+      securityContext:
+        seccompProfile:
+          type: RuntimeDefault
       containers:
         - name: connector
           image: "twingate/connector:1"
@@ -69,8 +72,6 @@ spec:
               value: "https://test-tenant.twingate.com"
             - name: TWINGATE_LOG_LEVEL
               value: "3"
-            - name: FOO
-              value: "bar"
           securityContext:
             allowPrivilegeEscalation: false
             capabilities:
