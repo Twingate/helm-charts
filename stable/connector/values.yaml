@@ -84,6 +84,8 @@ securityContext:
     drop: ["ALL"]
   runAsNonRoot: true
   runAsUser: 65532
+  seccompProfile:
+    type: RuntimeDefault
   # readOnlyRootFilesystem: true
 
 ## Security context for the Connector pod
