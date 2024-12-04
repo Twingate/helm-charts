@@ -26,11 +26,16 @@ spec:
         {{- toYaml . | nindent 8 }}
     {{- end }}
     spec:
-    {{- if .Values.icmpSupport.enabled }}
+    {{- if or .Values.icmpSupport.enabled .Values.podSecurityContext }}
       securityContext:
+      {{- with .Values.podSecurityContext }}
+      {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- if .Values.icmpSupport.enabled }}
         sysctls:
         - name: net.ipv4.ping_group_range
           value: "0  2147483647"
+      {{- end }}
     {{- end }}
     {{- if .Values.hostNetwork }}
       hostNetwork: true
@@ -90,12 +95,10 @@ spec:
             - name: {{ $key }}
               value: {{ $value | quote }}
             {{- end }}
+          {{- with .Values.securityContext }}
           securityContext:
-            allowPrivilegeEscalation: false
-            capabilities:
-              drop: ["ALL"]
-            runAsNonRoot: true
-            runAsUser: 65532
+            {{- toYaml . | nindent 12 }}
+          {{- end }}
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
       {{- with .Values.nodeSelector }}
