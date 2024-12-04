@@ -45,6 +45,20 @@ spec:
         - name: connector
           image: "twingate/connector:1"
           imagePullPolicy: Always
+          readinessProbe:
+            exec:
+              command:
+              - /connectorctl
+              - health
+            initialDelaySeconds: null
+            periodSeconds: 5
+          livenessProbe:
+            exec:
+              command:
+              - /connectorctl
+              - health
+            initialDelaySeconds: 5
+            periodSeconds: 5
           envFrom:
             - secretRef:
                 name: test-connector
@@ -65,6 +79,8 @@ spec:
               - ALL
             runAsNonRoot: true
             runAsUser: 65532
+            seccompProfile:
+              type: RuntimeDefault
           resources:
             requests:
               cpu: 50m
