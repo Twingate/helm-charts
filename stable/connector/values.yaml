@@ -82,11 +82,11 @@ securityContext:
   allowPrivilegeEscalation: false
   capabilities:
     drop: ["ALL"]
+  readOnlyRootFilesystem: true
   runAsNonRoot: true
   runAsUser: 65532
   seccompProfile:
     type: RuntimeDefault
-  # readOnlyRootFilesystem: true
 
 ## Security context for the Connector pod
 ## https://kubernetes.io/docs/tasks/configure-pod-container/security-context/#set-the-security-context-for-a-pod
@@ -113,7 +113,6 @@ readinessProbe:
     - health
   initialDelaySeconds:
   periodSeconds: 5
-
 
 livenessProbe:
   exec:
