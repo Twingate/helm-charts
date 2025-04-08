@@ -60,6 +60,7 @@ spec:
             capabilities:
               drop:
               - ALL
+            readOnlyRootFilesystem: true
             runAsNonRoot: true
             runAsUser: 65532
             seccompProfile:
@@ -68,3 +69,9 @@ spec:
             requests:
               cpu: 50m
               memory: 200Mi
+          volumeMounts:
+          - name: twingate-socket
+            mountPath: /var/run/twingate
+      volumes:
+      - name: twingate-socket
+        emptyDir: {}
