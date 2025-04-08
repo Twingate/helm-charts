@@ -74,6 +74,7 @@ spec:
             capabilities:
               drop:
               - ALL
+            readOnlyRootFilesystem: true
             runAsNonRoot: true
             runAsUser: 65532
             seccompProfile:
@@ -82,9 +83,15 @@ spec:
             requests:
               cpu: 50m
               memory: 200Mi
+          volumeMounts:
+          - name: twingate-socket
+            mountPath: /var/run/twingate
       topologySpreadConstraints:
         - labelSelector:
             matchLabels:
               app.kubernetes.io/name: connector
           maxSkew: 1
           topologyKey: kubernetes.io/hostname
+      volumes:
+      - name: twingate-socket
+        emptyDir: {}

@@ -101,6 +101,9 @@ spec:
           {{- end }}
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
+          volumeMounts:
+          - name: twingate-socket
+            mountPath: /var/run/twingate
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}
@@ -127,3 +130,6 @@ spec:
       dnsConfig:
         {{- toYaml . | nindent 8 }}
     {{- end }}
+      volumes:
+      - name: twingate-socket
+        emptyDir: {}
