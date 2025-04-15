@@ -1,5 +1,5 @@
 #!/bin/sh
-
+set -x
 git config --global user.email "build-bot@twingate.com"
 git config --global user.name "twingate-build-bot"
 git add packages
