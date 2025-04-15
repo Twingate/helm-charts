@@ -50,7 +50,7 @@ spec:
               command:
               - /connectorctl
               - health
-            initialDelaySeconds: null
+            initialDelaySeconds: 5
             periodSeconds: 5
           livenessProbe:
             exec:

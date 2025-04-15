@@ -111,7 +111,7 @@ readinessProbe:
     command:
     - /connectorctl
     - health
-  initialDelaySeconds:
+  initialDelaySeconds: 5
   periodSeconds: 5
 
 livenessProbe:
