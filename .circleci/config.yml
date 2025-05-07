@@ -1,11 +1,11 @@
 version: 2.1
 orbs:
-  go: circleci/go@1.7.3
-  helm: circleci/helm@2.0.1
+  go: circleci/go@3.0.2
+  helm: circleci/helm@3.1.0
 jobs:
   lint-charts:
     docker:
-      - image: quay.io/helmpack/chart-testing:v3.9.0
+      - image: quay.io/helmpack/chart-testing:v3.12.0
     steps:
       - checkout
       - run:
@@ -16,7 +16,7 @@ jobs:
   golden-tests:
     executor:
       name: go/default
-      tag: '1.20'
+      tag: '1.24'
     steps:
       - checkout
       - helm/install-helm-client
@@ -30,7 +30,7 @@ jobs:
 
   build-and-publish-charts:
     docker:
-      - image: alpine/helm:3.11.2
+      - image: alpine/helm:3.17.3
     steps:
       - run:
           name: provision

@@ -1,6 +1,6 @@
 module twingate-helm-charts
 
-go 1.20
+go 1.24
 
 require (
 	github.com/gruntwork-io/terratest v0.41.16
