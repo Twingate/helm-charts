@@ -1,7 +1,7 @@
 version: 2.1
 orbs:
   go: circleci/go@3.0.2
-  helm: circleci/helm@2.0.1
+  helm: circleci/helm@3.1.0
 jobs:
   lint-charts:
     docker:
@@ -19,10 +19,10 @@ jobs:
       tag: '1.24'
     steps:
       - checkout
-      - helm/install-helm-client
-      - go/load-cache
+      - helm/install_helm_client
+      - go/load-build-cache
       - go/mod-download
-      - go/save-cache
+      - go/save-build-cache
       - run:
           name: test
           command: |
