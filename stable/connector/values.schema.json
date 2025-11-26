@@ -83,7 +83,7 @@
             "type": "array",
             "default": [],
             "title": "Container ports to expose",
-            "description": "List of container ports to expose.",
+            "description": "List of container ports to expose",
             "items": {
                 "type": "object",
                 "required": ["name", "containerPort"],
