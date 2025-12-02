@@ -1,0 +1,10 @@
+containerPorts:
+  - name: metrics
+    containerPort: 9999
+    protocol: TCP
+
+connector:
+  network: "test-tenant"
+  accessToken: "ACCESS_TOKEN"
+  refreshToken: "REFRESH_TOKEN"
+

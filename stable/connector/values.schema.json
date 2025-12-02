@@ -79,6 +79,43 @@
                 "enabled": false
             }]
         },
+        "containerPorts": {
+            "type": "array",
+            "default": [],
+            "title": "Container ports to expose",
+            "description": "List of container ports to expose",
+            "items": {
+                "type": "object",
+                "required": ["name", "containerPort"],
+                "properties": {
+                    "name": {
+                        "type": "string",
+                        "title": "Port name",
+                        "examples": ["metrics"]
+                    },
+                    "containerPort": {
+                        "type": "integer",
+                        "minimum": 1,
+                        "maximum": 65535,
+                        "title": "Container port number",
+                        "examples": [9999]
+                    },
+                    "protocol": {
+                        "type": "string",
+                        "enum": ["TCP", "UDP", "SCTP"],
+                        "default": "TCP",
+                        "title": "Protocol"
+                    }
+                }
+            },
+            "examples": [[
+                {
+                    "name": "metrics",
+                    "containerPort": 9999,
+                    "protocol": "TCP"
+                }
+            ]]
+        },
         "connector": {
             "type": "object",
             "default": {},
@@ -162,6 +199,7 @@
         "icmpSupport": {
             "enabled": false
         },
+        "containerPorts": [],
         "connector": {
             "logLevel": "error",
             "logAnalytics": "v2",

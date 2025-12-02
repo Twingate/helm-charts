@@ -96,6 +96,16 @@ podSecurityContext: {}
   #   type: RuntimeDefault
 
 
+## Container ports to expose
+## This is useful for exposing metrics endpoints
+## Example for metrics on port 9999:
+## containerPorts:
+##   - name: metrics
+##     containerPort: 9999
+##     protocol: TCP
+##
+containerPorts: []
+
 ## Connector Arguments
 ##
 connector: {}
