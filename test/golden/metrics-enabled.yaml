@@ -1,0 +1,9 @@
+metrics:
+  enabled: true
+  port: 9999
+  prometheusAnnotations: true
+
+connector:
+  network: "test-tenant"
+  accessToken: "ACCESS_TOKEN"
+  refreshToken: "REFRESH_TOKEN"

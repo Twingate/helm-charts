@@ -122,6 +122,39 @@
                 }
             ]]
         },
+        "metrics": {
+            "type": "object",
+            "default": {},
+            "title": "Prometheus metrics configuration",
+            "description": "Configure Prometheus metrics exposure for the connector",
+            "properties": {
+                "enabled": {
+                    "type": "boolean",
+                    "default": false,
+                    "title": "Enable metrics",
+                    "description": "Enable Prometheus metrics endpoint"
+                },
+                "port": {
+                    "type": "integer",
+                    "default": 9999,
+                    "minimum": 1,
+                    "maximum": 65535,
+                    "title": "Metrics port",
+                    "description": "Port number for the metrics endpoint"
+                },
+                "prometheusAnnotations": {
+                    "type": "boolean",
+                    "default": true,
+                    "title": "Prometheus annotations",
+                    "description": "Add Prometheus scrape annotations to the pod"
+                }
+            },
+            "examples": [{
+                "enabled": true,
+                "port": 9999,
+                "prometheusAnnotations": true
+            }]
+        },
         "connector": {
             "type": "object",
             "default": {},
