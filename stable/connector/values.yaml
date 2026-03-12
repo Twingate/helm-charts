@@ -15,6 +15,11 @@ image:
 ##
 hostNetwork: false  # To enable hostnetwork for pod
 
+## Name of the service account to use
+## ref: https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/
+##
+serviceAccountName: ""
+
 ## Resource requests and limits
 ## ref: https://kubernetes.io/docs/user-guide/compute-resources/
 ##
