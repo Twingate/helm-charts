@@ -58,6 +58,12 @@
             "default": false,
             "title": "Enable hostnetwork on pod"
         },
+        "serviceAccountName": {
+            "type": "string",
+            "default": "",
+            "title": "Name of the service account to use",
+            "description": "The name of the service account to use for the pod"
+        },
         "icmpSupport": {
             "type": "object",
             "default": {},
