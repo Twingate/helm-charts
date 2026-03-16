@@ -119,6 +119,10 @@ metrics:
   enabled: false
   port: 9999
   prometheusAnnotations: true
+  podMonitor:
+    enabled: false
+    interval: 30s
+    labels: {}
 
 ## Connector Arguments
 ##

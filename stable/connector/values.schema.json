@@ -147,6 +147,32 @@
                     "default": true,
                     "title": "Prometheus annotations",
                     "description": "Add Prometheus scrape annotations to the pod"
+                },
+                "podMonitor": {
+                    "type": "object",
+                    "default": {},
+                    "title": "PodMonitor configuration",
+                    "description": "Configure a Prometheus Operator PodMonitor resource",
+                    "properties": {
+                        "enabled": {
+                            "type": "boolean",
+                            "default": false,
+                            "title": "Enable PodMonitor",
+                            "description": "Create a PodMonitor resource for Prometheus Operator"
+                        },
+                        "interval": {
+                            "type": "string",
+                            "default": "30s",
+                            "title": "Scrape interval",
+                            "description": "Prometheus scrape interval"
+                        },
+                        "labels": {
+                            "type": "object",
+                            "default": {},
+                            "title": "Additional labels",
+                            "description": "Additional labels for the PodMonitor (useful for Prometheus Operator podMonitorSelector)"
+                        }
+                    }
                 }
             },
             "examples": [{
