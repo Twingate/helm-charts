@@ -1,0 +1,14 @@
+metrics:
+  enabled: true
+  port: 9999
+  prometheusAnnotations: true
+  podMonitor:
+    enabled: true
+    interval: 30s
+    labels:
+      release: prometheus
+
+connector:
+  network: "acme"
+  accessToken: "access token"
+  refreshToken: "refresh token"

@@ -1,0 +1,22 @@
+{{- if and .Values.metrics.enabled .Values.metrics.podMonitor.enabled }}
+apiVersion: monitoring.coreos.com/v1
+kind: PodMonitor
+metadata:
+  name: {{ include "cn.fullname" . }}
+  labels:
+{{ include "cn.labels" . | indent 4 }}
+{{- with .Values.metrics.podMonitor.labels }}
+    {{- toYaml . | nindent 4 }}
+{{- end }}
+spec:
+  podMetricsEndpoints:
+    - port: metrics
+      path: /metrics
+      {{- with .Values.metrics.podMonitor.interval }}
+      interval: {{ . }}
+      {{- end }}
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: {{ include "cn.name" . }}
+      app.kubernetes.io/instance: {{ .Release.Name }}
+{{- end }}
