@@ -1,0 +1,14 @@
+metrics:
+  enabled: true
+  port: 9999
+  prometheusAnnotations: true
+  podMonitor:
+    enabled: true
+    interval: 30s
+    labels:
+      release: prometheus
+
+connector:
+  network: "test-tenant"
+  accessToken: "ACCESS_TOKEN"
+  refreshToken: "REFRESH_TOKEN"

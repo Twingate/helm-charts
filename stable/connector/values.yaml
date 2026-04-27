@@ -111,6 +111,19 @@ podSecurityContext: {}
 ##
 containerPorts: []
 
+## Prometheus metrics support
+## When enabled, sets TWINGATE_METRICS_PORT env var, exposes the metrics port,
+## and optionally adds Prometheus scrape annotations to the pod.
+##
+metrics:
+  enabled: false
+  port: 9999
+  prometheusAnnotations: true
+  podMonitor:
+    enabled: false
+    interval: 30s
+    labels: {}
+
 ## Connector Arguments
 ##
 connector: {}

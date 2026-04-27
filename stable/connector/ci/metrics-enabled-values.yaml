@@ -1,0 +1,9 @@
+metrics:
+  enabled: true
+  port: 9999
+  prometheusAnnotations: true
+
+connector:
+  network: "acme"
+  accessToken: "access token"
+  refreshToken: "refresh token"
