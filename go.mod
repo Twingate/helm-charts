@@ -40,7 +40,7 @@ require (
 	github.com/stretchr/testify v1.8.1 // indirect
 	github.com/urfave/cli v1.22.2 // indirect
 	golang.org/x/crypto v0.52.0 // indirect
-	golang.org/x/net v0.54.0 // indirect
+	golang.org/x/net v0.55.0 // indirect
 	golang.org/x/oauth2 v0.27.0 // indirect
 	golang.org/x/sys v0.45.0 // indirect
 	golang.org/x/term v0.43.0 // indirect
